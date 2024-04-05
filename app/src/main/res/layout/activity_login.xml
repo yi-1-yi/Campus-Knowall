@@ -7,14 +7,14 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/userid"
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="100dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_background"
-        android:hint="@string/id_prompt" />
+        android:hint="@string/username_prompt" />
 
     <EditText
         android:id="@+id/password"

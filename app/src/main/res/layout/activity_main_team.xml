@@ -20,7 +20,6 @@
         android:layout_alignParentBottom ="true"
         android:layout_marginBottom="0dp"
         android:background="#E2EDF1"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"/>
+        app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

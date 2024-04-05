@@ -1,55 +1,16 @@
 package com.example.campus_knowall.Bean;
 
-
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
 
 public class User extends BmobUser {
-    private  String userid;
-    private  String password;
-    private  String name;
-    private  String phone;
-    private  String email;
-
-    public String getUserid() {
-        return userid;
+    private BmobFile avatar;
+//现，该类已有属性：昵称、密码、头像、电话号码、电话验证、邮箱、邮箱验证、
+    public BmobFile getAvatar() {
+        return avatar;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @Override
-    public String getEmail() {
-        return email;
-    }
-
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAvatar(BmobFile avatar) {
+        this.avatar = avatar;
     }
 }
