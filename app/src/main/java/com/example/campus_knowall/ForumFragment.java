@@ -2,63 +2,91 @@ package com.example.campus_knowall;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+/*import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;*/
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ForumFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.campus_knowall.Adapter.ForumAdapter;
+import com.example.campus_knowall.Bean.Post;
+
+import java.util.List;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+
 public class ForumFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ForumFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ForumFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ForumFragment newInstance(String param1, String param2) {
-        ForumFragment fragment = new ForumFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private RecyclerView rv;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    List<Post> data;
+    private ForumAdapter forumAdapter;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,@Nullable  Bundle savedInstanceState) {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_forum, container, false);
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+
+        //逻辑处理
+        initView();
+        Bmob.initialize(getActivity(), "417e88a4dde438927b0c164bb450d7e3");
+
+        //初始刷新
+        Refresh();
+
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_green_light,android.R.color.holo_red_light,android.R.color.holo_blue_bright);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Refresh();
+            }
+        });
+    }
+
+    private void Refresh() {
+        BmobQuery<Post> Po=new BmobQuery<Post>();
+        Po.order("-createdAt");
+        Po.setLimit(1000);
+        Po.findObjects(new FindListener<Post>() {
+            @Override
+            public void done(List<Post> list, BmobException e) {
+                swipeRefreshLayout.setRefreshing(false);
+                if(e==null){
+                    data=list;
+                    forumAdapter=new ForumAdapter(getActivity(),data);
+                    rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    rv.setAdapter(forumAdapter);
+                }else {
+                    swipeRefreshLayout.setRefreshing(false);
+                    Toast.makeText(getActivity(),"获取数据失败",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+
+    private void initView() {
+        rv=getActivity().findViewById(R.id.recyclerview);
+        swipeRefreshLayout=getActivity().findViewById(R.id.swipe);
+
+    }
+
 }
