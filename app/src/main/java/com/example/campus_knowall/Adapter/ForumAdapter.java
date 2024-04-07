@@ -87,6 +87,9 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     int position = recyclerViewHOlder.getAdapterPosition();
                     if (BmobUser.getCurrentUser(BmobUser.class) != null) {
                         Intent in = new Intent(context, Recive.class);
+//                        in.putExtra("username",post.getName());//这三行好像没什么用，是第二种方法，但是他没用
+//                        in.putExtra("content",post.getContent());
+//                        in.putExtra("time",post.getCreatedAt());
                         in.putExtra("id", data.get(position).getObjectId());
                         context.startActivity(in);
                     } else {
