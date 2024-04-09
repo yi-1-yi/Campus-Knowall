@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.campus_knowall.Adapter.ForumAdapter;
 import com.example.campus_knowall.Bean.Post;
+import com.example.campus_knowall.R;
 
 import java.util.List;
 
@@ -76,7 +77,7 @@ public class ForumFragment extends Fragment {
                     rv.setAdapter(forumAdapter);
                 }else {
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(getActivity(),"获取数据失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"获取数据失败"+e,Toast.LENGTH_SHORT).show();
                 }
 
             }
