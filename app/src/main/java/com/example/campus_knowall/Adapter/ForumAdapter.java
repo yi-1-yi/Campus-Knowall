@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.campus_knowall.Bean.Post;
 import com.example.campus_knowall.R;
 import com.example.campus_knowall.activity.Login;
-import com.example.campus_knowall.activity.Recive;
+import com.example.campus_knowall.activity.Recieve;
 
 import java.util.List;
-import java.util.logging.LogRecord;
 
 import cn.bmob.v3.BmobUser;
 
@@ -56,7 +56,7 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if(position==MAX_num-1){
             return F_Type;
         }else{
-            return F_Type;
+            return N_Type;
         }
     }
 
@@ -74,19 +74,23 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 }
             }, 2000);
         } else {
+            //ORD_ITEM内容
             final RecyclerViewHOlder recyclerViewHOlder = (RecyclerViewHOlder) viewHolder;
             Post post = data.get(i);
             recyclerViewHOlder.nickname.setText(post.getNickname());
             recyclerViewHOlder.content.setText(post.getContent());
             recyclerViewHOlder.time.setText(post.getCreatedAt());
 
-
             recyclerViewHOlder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int position = recyclerViewHOlder.getAdapterPosition();
+
                     if (BmobUser.getCurrentUser(BmobUser.class) != null) {
-                        Intent in = new Intent(context, Recive.class);
+                        Intent in = new Intent(context, Recieve.class);
+                        in.putExtra("nickname",post.getNickname());
+                        in.putExtra("content",post.getContent());
+                        in.putExtra("time",post.getCreatedAt());
                         in.putExtra("id", data.get(position).getObjectId());
                         context.startActivity(in);
                     } else {
@@ -110,7 +114,7 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private class RecyclerViewHOlder extends RecyclerView.ViewHolder {
 
-        public TextView nickname, content, time;
+        public TextView nickname, content, time;//ord_item的textview
         public TextView loading;
 
         public RecyclerViewHOlder(View itemview, int view_type) {
