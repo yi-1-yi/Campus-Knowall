@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:src="@drawable/back"
+            android:id="@+id/back"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="#000" />
+
+        <TextView
+            android:paddingLeft="15dp"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:text="创建论坛"
+            android:id="@+id/rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <EditText
+            android:layout_margin="5dp"
+            android:id="@+id/com_name"
+            android:paddingLeft="15dp"
+            android:background="@drawable/shape_edit"
+            android:layout_marginTop="10dp"
+            android:hint="请输入论坛名"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <EditText
+            android:layout_margin="5dp"
+            android:id="@+id/com_info"
+            android:paddingTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/shape_edit"
+            android:layout_marginTop="25dp"
+            android:gravity="top"
+            android:hint="请输入论坛介绍"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/pushcom"
+        android:layout_margin="8dp"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:background="@drawable/shape_button"
+        android:text="创建"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
