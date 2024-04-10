@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:textSize= "40sp"
         android:text="@string/hello"
-        android:gravity="center"
-       />
+        android:gravity="center" />
 
 </LinearLayout>

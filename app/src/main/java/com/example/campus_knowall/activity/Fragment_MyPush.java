@@ -21,7 +21,6 @@ import com.example.campus_knowall.Bean.User;
 import com.example.campus_knowall.R;
 
 import java.util.List;
-import java.util.Objects;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
@@ -80,22 +79,6 @@ public class Fragment_MyPush extends Fragment {
     }
 
     private void RefreshOth() {
-//
-//        BmobQuery<Post> query = new BmobQuery<>();
-//        query.addWhereEqualTo("user_onlyid",user_onlyid);
-//        query.include("author");
-//        query.order("-createdAt");
-//        query.findObjects(new FindListener<Post>() {
-//            @Override
-//            public void done(List<Post> list, BmobException e) {
-//                if (e == null){
-//                    String size = String.valueOf(list.size());
-//                    my_pushnum.setText(size);
-//                }else {
-//                    Toast.makeText(MyInfo.this, "查询帖数失败", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
 
         BmobQuery<Post> query = new BmobQuery<>();
         query.addWhereEqualTo("userOnlyId",user_onlyid);
