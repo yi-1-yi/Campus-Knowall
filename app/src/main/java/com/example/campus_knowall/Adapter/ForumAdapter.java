@@ -3,8 +3,6 @@ package com.example.campus_knowall.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,6 +89,7 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                         in.putExtra("nickname",post.getNickname());
                         in.putExtra("content",post.getContent());
                         in.putExtra("time",post.getCreatedAt());
+                        in.putExtra("user_onlyid",post.getUserOnlyId());
                         in.putExtra("id", data.get(position).getObjectId());
                         context.startActivity(in);
                     } else {
