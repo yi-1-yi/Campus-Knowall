@@ -17,11 +17,13 @@
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom ="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:background="#E2EDF1"
-        app:menu="@menu/bottom_nav_menu"
-        app:labelVisibilityMode="labeled"/>
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@animator/selector_color"
+        app:itemTextColor="@animator/selector_color"
+        app:menu="@menu/bottom_nav_menu" />
 
 
 

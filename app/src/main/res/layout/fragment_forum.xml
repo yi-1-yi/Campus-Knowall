@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="8dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_top"
                     android:orientation="horizontal"
@@ -41,7 +41,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="10dp"
-                        android:text="搜索应用"
+                        android:text="搜索一下"
                         android:textColor="#636262"
                         android:textSize="20sp" />
 
@@ -55,10 +55,12 @@
 
                 <ImageButton
                     android:id="@+id/posting"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/posting" />
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/posting1" />
 
             </LinearLayout>
         </LinearLayout>
@@ -69,7 +71,7 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="85dp">
 
             <androidx.recyclerview.widget.RecyclerView

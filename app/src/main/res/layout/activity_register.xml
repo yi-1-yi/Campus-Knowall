@@ -14,6 +14,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_background"
+        android:lines="1"
         android:hint="@string/username_prompt" />
 
     <EditText
@@ -24,6 +25,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_background"
+        android:lines="1"
         android:hint="@string/password_prompt" />
 
     <EditText
@@ -34,6 +36,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_background"
+        android:lines="1"
         android:hint="@string/password_prompt2" />
 
 

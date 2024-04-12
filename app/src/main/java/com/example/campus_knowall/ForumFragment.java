@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.campus_knowall.Adapter.ForumAdapter;
 import com.example.campus_knowall.Bean.Post;
+import com.example.campus_knowall.activity.PushContent;
 import com.example.campus_knowall.activity.Search;
 
 import java.util.List;
@@ -33,6 +35,7 @@ public class ForumFragment extends Fragment {
     private LinearLayout homesearch;
     List<Post> data;
     private ForumAdapter forumAdapter;
+    private ImageButton imageButton;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,@Nullable  Bundle savedInstanceState) {
@@ -43,7 +46,6 @@ public class ForumFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
 
 
         //逻辑处理
@@ -66,6 +68,12 @@ public class ForumFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(),Search.class));
+            }
+        });
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), PushContent.class));
             }
         });
     }
@@ -97,6 +105,8 @@ public class ForumFragment extends Fragment {
         rv=getActivity().findViewById(R.id.recyclerview);
         swipeRefreshLayout=getActivity().findViewById(R.id.swipe);
         homesearch = getActivity().findViewById(R.id.homesearch);
+        imageButton=getActivity().findViewById(R.id.posting);
+
     }
 
 }

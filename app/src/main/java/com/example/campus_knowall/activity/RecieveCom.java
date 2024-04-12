@@ -25,7 +25,6 @@ public class RecieveCom extends AppCompatActivity {
 
     private TextView rec_cname,rec_cinfo,rec_cuser;
     private ImageView reccom_collect;
-
     private ImageView com_back;
 
     @Override

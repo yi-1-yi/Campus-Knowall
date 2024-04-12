@@ -21,7 +21,8 @@ import java.util.List;
 
 import cn.bmob.v3.BmobUser;
 
-public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
     private Context context;
     private List<Post> data;
 
@@ -31,7 +32,7 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private int MAX_num = 15;
     private Boolean isfootview = true;
 
-    public ForumAdapter(Context context, List<Post> data) {
+    public TeamAdapter( Context context, List<Post> data) {
         this.context = context;
         this.data = data;
     }
@@ -77,7 +78,6 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             recyclerViewHOlder.nickname.setText(post.getNickname());
             recyclerViewHOlder.content.setText(post.getContent());
             recyclerViewHOlder.time.setText(post.getCreatedAt());
-            recyclerViewHOlder.title.setText(post.getTitle());
 
             recyclerViewHOlder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,7 +86,6 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
                     if (BmobUser.getCurrentUser(BmobUser.class) != null) {
                         Intent in = new Intent(context, Recieve.class);
-                        in.putExtra("title",post.getTitle());
                         in.putExtra("nickname",post.getNickname());
                         in.putExtra("content",post.getContent());
                         in.putExtra("time",post.getCreatedAt());
@@ -114,13 +113,12 @@ public class ForumAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private class RecyclerViewHOlder extends RecyclerView.ViewHolder {
 
-        public TextView nickname, content, time,title;//ord_item的textview
+        public TextView nickname, content, time;//ord_item的textview
         public TextView loading;
 
         public RecyclerViewHOlder(View itemview, int view_type) {
             super(itemview);
             if (view_type == N_Type) {
-                title=itemview.findViewById(R.id.title);
                 nickname = itemview.findViewById(R.id.nickname);
                 content = itemview.findViewById(R.id.content);
                 time = itemview.findViewById(R.id.time);

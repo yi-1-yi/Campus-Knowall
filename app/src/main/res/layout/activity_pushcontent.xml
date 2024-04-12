@@ -10,7 +10,8 @@
 
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/other_top_navigation">
 
         <ImageView
             android:src="@drawable/back"
@@ -21,11 +22,11 @@
             app:tint="#000" />
 
         <TextView
+            android:id="@+id/rec"
             android:paddingLeft="15dp"
             android:textSize="20sp"
             android:textColor="#000"
             android:text="发布帖子"
-            android:id="@+id/rec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -34,28 +35,41 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
-        
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+
         <EditText
-            android:textStyle="bold"
-            android:textColorHint="#969696"
-            android:id="@+id/pushcontent"
-            android:gravity="top"
-            android:hint="请输入发布的内容"
+            android:id="@+id/pushtitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:hint="帖子标题（必填）"
+            android:lines="1"
+            android:textSize="28sp"
+            android:textColorHint="#969696"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/pushcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:hint="请输入帖子内容..."
+            android:lines="10"
+            android:textSize="20sp"
+            android:textColorHint="#969696" />
     </LinearLayout>
 
     <Button
         android:layout_margin="10dp"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#fff"
-        android:background="#000"
+        android:background="@drawable/button_background"
         android:id="@+id/push"
-        android:text="发布"
+        android:text="发 布"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

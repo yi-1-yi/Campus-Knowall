@@ -48,6 +48,8 @@
         <activity android:name=".activity.MyFollower" />
         <activity android:name=".activity.MyFocus" />
         <activity android:name=".activity.Search" />
+
+
     </application>
 
 </manifest>

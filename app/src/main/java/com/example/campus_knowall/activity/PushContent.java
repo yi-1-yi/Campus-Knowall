@@ -20,7 +20,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class PushContent extends AppCompatActivity {
 
-    private EditText pushcontent;
+    private EditText  pushtitle,pushcontent;
     private ImageView back;
     private Button push;
 
@@ -43,6 +43,7 @@ public class PushContent extends AppCompatActivity {
                     User user = BmobUser.getCurrentUser(User.class);
                     Post po = new Post();
                     po.setNickname(user.getUsername());
+                    po.setTitle(pushtitle.getText().toString());
                     po.setContent(pushcontent.getText().toString());
                     po.setIsrelated("0");
                     po.setAuthor(user);
@@ -51,9 +52,9 @@ public class PushContent extends AppCompatActivity {
                         @Override
                         public void done(String s, BmobException e) {
                             if (e==null){
+                                pushtitle.setText("");
                                 pushcontent.setText("");
                                 Toast.makeText(PushContent.this, "发布成功", Toast.LENGTH_SHORT).show();
-
                                 finish();
                             }else {
                                 Toast.makeText(PushContent.this, "发布失败", Toast.LENGTH_SHORT).show();
@@ -75,6 +76,7 @@ public class PushContent extends AppCompatActivity {
 
     private void initView() {
         pushcontent = findViewById(R.id.pushcontent);
+        pushtitle=findViewById(R.id.pushtitle);
         push = findViewById(R.id.push);
         back = findViewById(R.id.back);
     }
