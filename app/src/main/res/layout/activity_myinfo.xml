@@ -18,18 +18,18 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="?attr/actionBarSize"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/other_top_navigation">
 
                 <ImageView
                     android:id="@+id/back"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="22dp"
+                    android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
-                    android:scaleX="0.5"
-                    android:scaleY="0.5"
-                    android:src="@drawable/back"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/return_icon"
                     app:tint="#000" />
 
                 <TextView
@@ -40,7 +40,7 @@
                     android:paddingLeft="15dp"
                     android:text="我的信息"
                     android:textColor="#000"
-                    android:textSize="20sp" />
+                    android:textSize="22sp" />
             </LinearLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -59,25 +59,27 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="110dp">
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@drawable/beijing">
+
+                <!--头像、昵称-->
                 <LinearLayout
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp">
                     <RelativeLayout
                         android:layout_width="70dp"
                         android:layout_height="70dp">
+
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/myavatar"
-                            android:src="@drawable/fczlm"
-                            android:layout_marginLeft="10dp"
                             android:layout_width="70dp"
-                            android:layout_height="70dp" />
+                            android:layout_height="70dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/fczlm" />
                         <ImageView
                             android:id="@+id/isshowrz"
                             android:layout_alignParentRight="true"
@@ -96,11 +98,11 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
                             android:gravity="center_vertical"
-                            android:id="@+id/my_name"
+                            android:id="@+id/mynickname"
                             android:textColor="#000"
                             android:textSize="23sp"
                             android:textStyle="bold"
-                            android:text="username"
+                            android:text="nickname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <LinearLayout
@@ -117,71 +119,63 @@
 
                             <ImageView
                                 android:id="@+id/my_gender"
-                                android:src="@drawable/man"
+                                android:src="@drawable/gril"
                                 android:layout_width="30dp"
                                 android:layout_height="22dp" />
 
                         </LinearLayout>
+                    </LinearLayout>
+                    <!--关注，编辑-->
+                    <LinearLayout
+                        android:gravity="right|center_vertical"
+                        android:layout_marginRight="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/focus"
+                            android:textColor="#303132"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:background="@drawable/shape_focus"
+                            android:text="关注"
+                            android:layout_marginRight="8dp"
+                            android:layout_width="80dp"
+                            android:layout_height="35dp" />
+                        <Button
+                            android:id="@+id/editmyinfo"
+                            android:textColor="#303132"
+                            android:textStyle="bold"
+                            android:textSize="15sp"
+                            android:background="@drawable/shape_focus"
+                            android:text="编辑资料"
+                            android:layout_width="85dp"
+                            android:layout_height="35dp" />
+                      <!--  android:visibility="gone"-->
 
                     </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <!--关注或者编辑资料的按钮还有二维码按钮-->
-                    <Button
-                        android:id="@+id/focus"
-                        android:visibility="gone"
-                        android:textColor="#f2c201"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:background="@drawable/shape_focus"
-                        android:text="关注"
-                        android:layout_width="80dp"
-                        android:layout_height="35dp" />
-                    <Button
-                        android:id="@+id/editmyinfo"
-                        android:visibility="gone"
-                        android:textColor="#f2c201"
-                        android:textStyle="bold"
-                        android:textSize="15sp"
-                        android:background="@drawable/shape_focus"
-                        android:text="编辑资料"
-                        android:layout_width="80dp"
-                        android:layout_height="35dp" />
-
-                </LinearLayout>
             </LinearLayout>
 
+                <!--粉丝...-->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <LinearLayout
                     android:gravity="center_vertical"
-                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="50dp">
                     <ImageView
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="10dp"
                         android:src="@drawable/rz_gr"
                         android:layout_width="30dp"
                         android:layout_height="30dp" />
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
                         <TextView
                             android:gravity="center_vertical"
                             android:textSize="18sp"
-                            android:textColor="#0004ff"
+                            android:textColor="#6163D5"
                             android:textStyle="bold"
                             android:text="个人认证："
                             android:layout_width="wrap_content"
@@ -189,76 +183,59 @@
                         <TextView
                             android:gravity="center_vertical"
                             android:textSize="18sp"
-                            android:textColor="#0004ff"
+                            android:textColor="#6163D5"
                             android:textStyle="bold"
                             android:text="优秀用户"
                             android:layout_width="wrap_content"
                             android:layout_height="40dp" />
-                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:gravity="center_vertical"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="8dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="45dp">
 
                     <TextView
                         android:layout_marginLeft="20dp"
                         android:gravity="center_vertical"
-                        android:textSize="18sp"
-                        android:textColor="#0004ff"
+                        android:textSize="22sp"
+                        android:textColor="#FFD918"
                         android:textStyle="bold"
-                        android:text="192.6W"
+                        android:text="0"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp" />
                     <TextView
                         android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="18sp"
+                        android:textSize="22sp"
                         android:textColor="#000"
                         android:textStyle="bold"
                         android:text="粉丝"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp" />
                     <TextView
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="18dp"
                         android:gravity="center_vertical"
-                        android:textSize="18sp"
-                        android:textColor="#0004ff"
+                        android:textSize="22sp"
+                        android:textColor="#FFD918"
                         android:textStyle="bold"
-                        android:text="83"
+                        android:text="2"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp" />
                     <TextView
                         android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"
-                        android:textSize="18sp"
+                        android:textSize="22sp"
                         android:textColor="#000"
                         android:textStyle="bold"
                         android:text="关注"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/mynickname"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="#000"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
-                        android:text="加载中..."
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
             </LinearLayout>
-
+            </LinearLayout>
             <com.ogaclejapan.smarttablayout.SmartTabLayout
                 android:layout_height="48dp"
                 android:layout_width="match_parent"
@@ -280,11 +257,8 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/myinfovp"
                 android:layout_width="match_parent"
-                android:layout_height="580dp"/>
+                android:layout_height="580dp" />
         </LinearLayout>
-
-
-
 
     </androidx.core.widget.NestedScrollView>
 

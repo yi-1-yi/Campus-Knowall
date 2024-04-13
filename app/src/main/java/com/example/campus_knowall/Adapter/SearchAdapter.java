@@ -69,7 +69,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             //这是ord_item的内容
             final RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) viewHolder;
             final Post post = data.get(i);
-            recyclerViewHolder.search_username.setText(post.getNickname());
+            recyclerViewHolder.search_title.setText(post.getTitle());
             recyclerViewHolder.search_nickname.setText(post.getNickname());
             recyclerViewHolder.search_content.setText(post.getContent());
             recyclerViewHolder.search_time.setText(post.getCreatedAt());
@@ -80,11 +80,12 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     int position = recyclerViewHolder.getAdapterPosition();
                     if (BmobUser.getCurrentUser(BmobUser.class) != null){
                         Intent in = new Intent(context, Recieve.class);
-                        in.putExtra("username",post.getNickname());
-                        in.putExtra("content",post.getNickname());
-                        in.putExtra("time",post.getContent());
+                        in.putExtra("content",post.getContent());
+                        in.putExtra("time",post.getCreatedAt());
                         in.putExtra("user_onlyid",post.getUserOnlyId());
                         in.putExtra("id",data.get(position).getObjectId());
+                        in.putExtra("title",post.getTitle());
+                        in.putExtra("nickname",post.getNickname());
                         context.startActivity(in);
                     }else {
                         Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show();
@@ -114,17 +115,17 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView search_username,search_nickname,search_content,search_time; //ord_item的TextView
+        public TextView search_nickname,search_content,search_time,search_title; //ord_item的TextView
         public TextView Loading;
 
 
         public RecyclerViewHolder(View itemview, int view_type) {
             super(itemview);
             if (view_type == N_TYPE){
-                search_username = itemview.findViewById(R.id.search_username);
                 search_nickname = itemview.findViewById(R.id.search_nickname);
                 search_content = itemview.findViewById(R.id.search_content);
                 search_time = itemview.findViewById(R.id.search_time);
+                search_title=itemview.findViewById(R.id.search_title);
             }else if(view_type == F_TYPE){
                 Loading = itemview.findViewById(R.id.footText);
             }

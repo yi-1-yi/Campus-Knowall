@@ -29,10 +29,9 @@ import cn.bmob.v3.listener.QueryListener;
 
 public class MyInfo extends AppCompatActivity {
     private ImageView back;
-    private TextView my_name,my_pushnum,my_comnum,my_nickname,usercreattime;
+    private TextView my_pushnum,my_comnum,my_nickname,usercreattime;
 
     private TextView info_title;
-
     private ImageView my_gender;
 
     private String user_onlyid;
@@ -127,7 +126,6 @@ public class MyInfo extends AppCompatActivity {
             @Override
             public void done(User user, BmobException e) {
                 if (e==null){
-                    my_name.setText(user.getUsername());
                     info_title.setText(user.getUsername());
                     my_nickname.setText(user.getNickname());
                    // followeList_id = user.getFollower_id().getObjectId();
@@ -182,7 +180,6 @@ public class MyInfo extends AppCompatActivity {
             @Override
             public void done(User user, BmobException e) {
                 if (e==null){
-                    my_name.setText(user.getUsername());
                     info_title.setText(user.getUsername());
                     my_nickname.setText(user.getNickname());
                     //followeList_id = user.getFollower_id().getObjectId();
@@ -201,11 +198,9 @@ public class MyInfo extends AppCompatActivity {
 
     private void initView() {
         back = findViewById(R.id.back);
-        my_name = findViewById(R.id.my_name);
 //        my_pushnum = findViewById(R.id.my_pushnum);
 //        my_comnum = findViewById(R.id.my_comnum);
         my_nickname = findViewById(R.id.mynickname);
-//        usercreattime = findViewById(R.id.usercreattime);
         my_gender = findViewById(R.id.my_gender);
         info_title = findViewById(R.id.info_title);
         //focus = findViewById(R.id.focus);

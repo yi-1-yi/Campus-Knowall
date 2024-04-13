@@ -31,11 +31,8 @@ public class Fragment_MyPush extends Fragment {
 
     private SwipeRefreshLayout swipe_mypush;
     private RecyclerView rv_mypush;
-
     private TextView error_mypush;
-
     private String user_onlyid;
-
     private List<Post> data;
 
     private MycollectpushAdapter mycollectpushAdapter;
@@ -121,7 +118,6 @@ public class Fragment_MyPush extends Fragment {
                     data = list;
                     if (data.size()>0){
                         swipe_mypush.setVisibility(View.VISIBLE);
-
                         mycollectpushAdapter = new MycollectpushAdapter(data,getActivity());
                         rv_mypush.setLayoutManager(new LinearLayoutManager(getActivity()));
                         rv_mypush.setAdapter(mycollectpushAdapter);

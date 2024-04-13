@@ -25,13 +25,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Recieve extends AppCompatActivity {
 
-    private TextView username,content,time;
+    private TextView nickname,content,time,title;
     private ImageView back;
-
     private ImageView rec_collect;
-
     private String user_onlyid;
-
     private CircleImageView touser;
 
     //关注按钮
@@ -67,9 +64,7 @@ public class Recieve extends AppCompatActivity {
             }
         });
 
-
-
-        username.setOnClickListener(new View.OnClickListener() {
+        nickname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Recieve.this,MyInfo.class);
@@ -112,8 +107,6 @@ public class Recieve extends AppCompatActivity {
 
             }
         });
-
-
 
         //收藏监听
         rec_collect.setOnClickListener(new View.OnClickListener() {
@@ -187,7 +180,7 @@ public class Recieve extends AppCompatActivity {
             public void done(Post post, BmobException e) {
                 if (post.getIsrelated().equals("1")){
                     //已被收藏
-                    rec_collect.setImageResource(R.drawable.shoucang_black);
+                    rec_collect.setImageResource(R.drawable.collection);
                 }else {
                     //无收藏
 
@@ -201,23 +194,24 @@ public class Recieve extends AppCompatActivity {
 
         //第二种
         Intent a = getIntent();
-        Intent b = getIntent();
-        Intent c = getIntent();
-        String usernamea = a.getStringExtra("username");
+        String nicknamea = a.getStringExtra("nickname");
         String contenta = a.getStringExtra("content");
         String timea = a.getStringExtra("time");
+        String titlea=a.getStringExtra("title");
 
-        username.setText(usernamea);
+        nickname.setText(nicknamea);
         content.setText(contenta);
         time.setText(timea);
+        title.setText(titlea);
 
 
     }
 
     private void initView() {
-        username = findViewById(R.id.username);
+        nickname = findViewById(R.id.nickname);
         content = findViewById(R.id.content);
         time = findViewById(R.id.time);
+        title=findViewById(R.id.title);
         back = findViewById(R.id.back);
         rec_collect = findViewById(R.id.rec_collect);
         focus_or_not = findViewById(R.id.focus_or_not);

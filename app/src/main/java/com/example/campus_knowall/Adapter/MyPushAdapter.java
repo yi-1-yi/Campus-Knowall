@@ -72,6 +72,7 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             recyclerViewHolder.nickname.setText(post.getNickname());
             recyclerViewHolder.content.setText(post.getContent());
             recyclerViewHolder.time.setText(post.getCreatedAt());
+            recyclerViewHolder.title.setText(post.getTitle());
 
             recyclerViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,7 +83,7 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
                         //需要改动
                         Intent in = new Intent(context, Recieve.class);
-                        in.putExtra("username",post.getNickname());
+                        in.putExtra("title",post.getTitle());
                         in.putExtra("content",post.getContent());
                         in.putExtra("time",post.getCreatedAt());
                         in.putExtra("id",data.get(position).getObjectId());
@@ -115,14 +116,14 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView username,nickname,content,time; //ord_item的TextView
+        public TextView title,nickname,content,time; //ord_item的TextView
         public TextView Loading;
 
 
         public RecyclerViewHolder(View itemview, int view_type) {
             super(itemview);
             if (view_type == N_TYPE){
-                username = itemview.findViewById(R.id.mypush_username);
+                title=itemview.findViewById(R.id.mypush_title);
                 nickname = itemview.findViewById(R.id.mypush_nickname);
                 content = itemview.findViewById(R.id.mypush_content);
                 time = itemview.findViewById(R.id.mypush_time);

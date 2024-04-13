@@ -69,8 +69,8 @@ public class MycollectpushAdapter extends RecyclerView.Adapter<RecyclerView.View
             //这是ord_item的内容
             final RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) viewHolder;
             final Post post = data.get(i);
-            recyclerViewHolder.username.setText(post.getNickname());
-            recyclerViewHolder.nickname.setText(post.getNickname());
+            recyclerViewHolder.title.setText(post.getTitle());
+          //  recyclerViewHolder.nickname.setText(post.getNickname());
             recyclerViewHolder.content.setText(post.getContent());
             recyclerViewHolder.time.setText(post.getCreatedAt());
 
@@ -81,7 +81,7 @@ public class MycollectpushAdapter extends RecyclerView.Adapter<RecyclerView.View
                     int position = recyclerViewHolder.getAdapterPosition();
                     if (BmobUser.getCurrentUser(BmobUser.class) != null){
                         Intent in = new Intent(context, Recieve.class);
-                        in.putExtra("username",post.getNickname());
+                       // in.putExtra("nickrname",post.getNickname());
                         in.putExtra("content",post.getContent());
                         in.putExtra("time",post.getCreatedAt());
                         in.putExtra("id",data.get(position).getObjectId());
@@ -115,17 +115,17 @@ public class MycollectpushAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView username,nickname,content,time; //ord_item的TextView
+        public TextView title,nickname,content,time; //ord_item的TextView
         public TextView Loading;
 
 
         public RecyclerViewHolder(View itemview, int view_type) {
             super(itemview);
             if (view_type == N_TYPE){
-                username = itemview.findViewById(R.id.co_username);
-                nickname = itemview.findViewById(R.id.co_nickname);
                 content = itemview.findViewById(R.id.co_content);
                 time = itemview.findViewById(R.id.co_time);
+                title=itemview.findViewById(R.id.co_title);
+
             }else if(view_type == F_TYPE){
                 Loading = itemview.findViewById(R.id.footText);
             }
