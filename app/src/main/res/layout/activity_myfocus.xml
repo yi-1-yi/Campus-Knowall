@@ -39,7 +39,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/mypush_error"
+        android:id="@+id/myfocus_error"
         android:visibility="gone"
         android:layout_marginTop="60dp"
         android:gravity="center"
@@ -51,14 +51,14 @@
         android:layout_height="wrap_content" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/mupush_swipe"
+        android:id="@+id/myfocus_swipe"
         android:visibility="gone"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-            android:id="@+id/mypushrv"
+            android:id="@+id/myfocus_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
