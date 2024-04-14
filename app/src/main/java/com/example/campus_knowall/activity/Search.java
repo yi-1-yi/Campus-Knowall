@@ -31,7 +31,7 @@ public class Search extends AppCompatActivity {
     private SwipeRefreshLayout search_swipe;
     private RecyclerView search_rv;
     private EditText searchcontent;
-    private ImageView search,back;
+    private ImageView search, back;
     private LinearLayout search_isnone;
     private ProgressBar search_progress;
 
@@ -46,7 +46,7 @@ public class Search extends AppCompatActivity {
 
         initView();
 
-        search_swipe.setColorSchemeResources(R.color.orange,android.R.color.holo_red_light,android.R.color.holo_blue_light);
+        search_swipe.setColorSchemeResources(R.color.orange, android.R.color.holo_red_light, android.R.color.holo_blue_light);
         search_swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -58,7 +58,7 @@ public class Search extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 getwant();
+                getwant();
             }
         });
 
@@ -78,39 +78,61 @@ public class Search extends AppCompatActivity {
             @Override
             public void run() {
                 String want = searchcontent.getText().toString().trim();
+
+
+
+
                 BmobQuery<Post> bmobQuery = new BmobQuery<>();
-                bmobQuery.addWhereEqualTo("content",want);
+                // 使用contains进行模糊查询
+                bmobQuery.addWhereContains("content", want);
                 bmobQuery.findObjects(new FindListener<Post>() {
                     @Override
                     public void done(List<Post> list, BmobException e) {
                         search_swipe.setRefreshing(false);
-                        if (e==null){
-                            //查询成功
-                            if (list.size()>0){
-
+                        if (e == null) {
+                            // 查询成功
+                            if (list.size() > 0) {
                                 search_progress.setVisibility(View.GONE);
                                 search_isnone.setVisibility(View.GONE);
                                 search_swipe.setVisibility(View.VISIBLE);
-                                //数据适配
-
+                                // 数据适配
                                 data = list;
-                                searchAdapter = new SearchAdapter(Search.this,data);
+                                searchAdapter = new SearchAdapter(Search.this, data);
                                 search_rv.setLayoutManager(new LinearLayoutManager(Search.this));
                                 search_rv.setAdapter(searchAdapter);
-
-                            }else {
+                            } else {
                                 search_progress.setVisibility(View.GONE);
                                 search_isnone.setVisibility(View.VISIBLE);
                                 search_swipe.setVisibility(View.GONE);
                             }
-                        }else {
+                        } else {
                             Toast.makeText(Search.this, "查询失败", Toast.LENGTH_SHORT).show();
                         }
                     }
-                });
-            }
-        },250);
 
+
+
+                });
+
+
+                //分页查询【Limit的值为100，最大有效设置值500（设置的数值超过500还是视为500）】
+                BmobQuery<Post> query = null;
+                query.order("score");
+                //说明：多个字段排序时，先按第一个字段进行排序，再按第二个字段进行排序，依次进行。
+//                query.findObjects(new FindListener<Post>() {
+//                    @Override
+//                    public void done(List<Post> list, BmobException e) {
+//                        if (null == e) {
+//                            //查询成功
+//                        } else {
+//                            //查询失败
+//                        }
+//                    }
+//                    });
+
+
+            }
+        }, 250);
     }
 
     private void initView() {
@@ -123,3 +145,13 @@ public class Search extends AppCompatActivity {
         search_progress = findViewById(R.id.search_progress);
     }
 }
+
+
+
+
+
+
+
+
+
+
