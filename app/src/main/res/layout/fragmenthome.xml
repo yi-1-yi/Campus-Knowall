@@ -12,16 +12,16 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="75dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:background="#f2c201">
+            android:background="#A6DAE5">
 
             <LinearLayout
             android:id="@+id/homesearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/shape_top"
@@ -29,12 +29,6 @@
             android:orientation="horizontal"
             android:padding="6dp">
 
-            <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:src="@drawable/qx"
-            app:tint="#ffffff" />
 
             <TextView
             android:layout_width="0dp"

@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             app:tint="#000" />
 
+        <!--帖子名称-->
         <TextView
             android:paddingLeft="15dp"
             android:textSize="22sp"
@@ -82,7 +83,8 @@
                     android:id="@+id/nickname"
                     android:text="用户名"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="#6E6A6A"/>
 
                 <TextView
                     android:gravity="center_vertical"
@@ -92,7 +94,8 @@
                     android:layout_marginLeft="15dp"
                     android:layout_toRightOf="@+id/username"
                     android:text="时间"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textColor="#6E6A6A"/>
             </LinearLayout>
             <Button
                 android:visibility="gone"

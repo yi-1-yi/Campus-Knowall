@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private ForumFragment forumFragment;
     private TeamFragment teamFragment;
-    private MessageFragment messageFragment;
     private MyFragment myFragment;
 
 
@@ -33,10 +32,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment(0);
                 }else if(item.getItemId()== R.id.navigation_team){
                     selectedFragment(1);
-                }else if(item.getItemId()== R.id.navigation_message){
-                    selectedFragment(2);
                 }else {
-                    selectedFragment(3);
+                    selectedFragment(2);
                 }
                 return  true;
             }
@@ -61,13 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 fragmentTransaction.show(teamFragment);
             }
-        }else if(position==2){
-            if(messageFragment==null){
-                messageFragment=new MessageFragment();
-                fragmentTransaction.add(R.id.content,messageFragment);
-            }else{
-                fragmentTransaction.show(messageFragment);
-            }
         }else{
             if(myFragment==null){
                 myFragment=new MyFragment();
@@ -87,10 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(teamFragment!=null){
             fragmentTransaction.hide(teamFragment);
-        }
-
-        if(messageFragment!=null){
-            fragmentTransaction.hide(messageFragment);
         }
 
         if(myFragment!=null){

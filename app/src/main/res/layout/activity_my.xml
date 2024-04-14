@@ -21,7 +21,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#f2c201"
+                android:background="#86D7E6"
                 android:orientation="vertical">
 
                 <RelativeLayout

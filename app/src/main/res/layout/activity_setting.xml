@@ -11,15 +11,16 @@
         android:gravity="center"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/other_top_navigation">
 
         <ImageView
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/back"
+            android:src="@drawable/return_icon"
             android:id="@+id/back"
             android:background="?android:attr/selectableItemBackground"
-            android:layout_width="wrap_content"
+            android:layout_width="22dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             app:tint="#000" />
 
         <TextView
@@ -42,7 +43,7 @@
         android:background="@drawable/shape_button"
         android:text="退出"
         android:textColor="#fff"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
 </LinearLayout>

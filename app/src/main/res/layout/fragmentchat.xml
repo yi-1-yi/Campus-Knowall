@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:background="#f2c201"
+        android:background="@drawable/avigation_of_homepage"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="80dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,15 +28,15 @@
                 android:layout_height="30dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/shezhi_my"
-                app:tint="#ffffff" />
+                app:tint="#000" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingLeft="10dp"
-                android:text="搜索应用"
-                android:textColor="#fff"
+                android:text="搜索一下"
+                android:textColor="#575555"
                 android:textSize="20sp"
                 android:textStyle="" />
 
@@ -44,7 +44,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/add"
-                app:tint="#fff" />
+                app:tint="#000" />
         </LinearLayout>
     </LinearLayout>
     <RelativeLayout
@@ -66,7 +66,8 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-       <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_alignParentRight="true"
@@ -74,9 +75,8 @@
             android:layout_marginRight="25dp"
             android:layout_marginBottom="25dp"
             android:clickable="true"
-            android:id="@+id/add"
-            app:backgroundTint="#0c9100"
-            android:src="@drawable/add" />
+            android:src="@drawable/add"
+            app:backgroundTint="#A6DAE5" />
 
     </RelativeLayout>
 
