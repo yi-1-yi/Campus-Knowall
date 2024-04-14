@@ -1,7 +1,6 @@
 package com.example.campus_knowall;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +31,7 @@ import cn.bmob.v3.listener.CountListener;
 import cn.bmob.v3.listener.QueryListener;
 
 public class MyFragment extends Fragment {
-    private TextView username;
+    private TextView nickname;
 
     private LinearLayout myinfo;
     private LinearLayout mypush;
@@ -64,7 +63,7 @@ public class MyFragment extends Fragment {
         getMyinfo();
 
         //设置粉丝和关注数的字体
-        setnumfont();
+       /* setnumfont();*/
 
         //获取我的关注别人的数量
         getMyfocusnum();
@@ -161,12 +160,12 @@ public class MyFragment extends Fragment {
         });
     }
 
-    private void setnumfont() { //Gorlock
+  /*  private void setnumfont() { //Gorlock
         Typeface fans = Typeface.createFromAsset(getActivity().getAssets(),"Headache.ttf");
         Typeface focus = Typeface.createFromAsset(getActivity().getAssets(),"Headache.ttf");
         fansnum.setTypeface(fans);
         myfocusnum.setTypeface(focus);
-    }
+    }*/
 
     private void getMyinfo() {
         //加载个人信息
@@ -177,8 +176,7 @@ public class MyFragment extends Fragment {
             @Override
             public void done(User user, BmobException e) {
                 if (e==null){
-                    username.setText(user.getUsername());
-//                    nickname.setText(user.getNickname());
+                    nickname.setText(user.getNickname());
                     if (user.getGender().equals("man")){
                         mine_gender.setImageResource(R.drawable.man);
                     }else {
@@ -192,8 +190,7 @@ public class MyFragment extends Fragment {
     }
 
     private void initView() {
-        username = getActivity().findViewById(R.id.username);
-//      nickname = getActivity().findViewById(R.id.nickname);
+        nickname = getActivity().findViewById(R.id.nickname);
 //      loginout = getActivity().findViewById(R.id.loginout);
         myinfo = getActivity().findViewById(R.id.myinfo);
         mypush = getActivity().findViewById(R.id.mypush);

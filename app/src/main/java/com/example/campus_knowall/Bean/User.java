@@ -10,7 +10,7 @@ public class User extends BmobUser {
 
     private String gender;
     //关注的人数
-    private Integer focusId_sum = 0;
+    private Integer focusIdsum = 0;
 
   //  private user_followers follower_id;
 
@@ -48,12 +48,12 @@ public class User extends BmobUser {
         this.gender = gender;
     }
 
-    public Integer getFocusId_sum() {
-        return focusId_sum;
+    public Integer getFocusIdsum() {
+        return focusIdsum;
     }
 
-    public void setFocusId_sum(Integer focusId_sum) {
-        this.focusId_sum = focusId_sum;
+    public void setFocusIdsum(Integer focusIdsum) {
+        this.focusIdsum = focusIdsum;
     }
 
    /* public user_followers getFollower_id() {
