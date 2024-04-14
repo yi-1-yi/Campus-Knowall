@@ -53,12 +53,12 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-<!--                <ImageView-->
-<!--                    android:id="@+id/my_level"-->
-<!--                    android:src="@drawable/l9"-->
-<!--                    android:layout_width="40dp"-->
-<!--                    android:layout_height="30dp"-->
-<!--                    app:tint="#fc5c00"/>-->
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/my_level"-->
+                <!--                    android:src="@drawable/l9"-->
+                <!--                    android:layout_width="40dp"-->
+                <!--                    android:layout_height="30dp"-->
+                <!--                    app:tint="#fc5c00"/>-->
 
                 <ImageView
                     android:id="@+id/myfollower_gender"

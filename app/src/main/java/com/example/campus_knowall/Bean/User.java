@@ -12,7 +12,7 @@ public class User extends BmobUser {
     //关注的人数
     private Integer focusIdsum = 0;
 
-  //  private user_followers follower_id;
+    //  private user_followers follower_id;
 
     private BmobRelation focuId;
 

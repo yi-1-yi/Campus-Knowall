@@ -73,7 +73,6 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             recyclerViewHolder.content.setText(post.getContent());
             recyclerViewHolder.time.setText(post.getCreatedAt());
             recyclerViewHolder.title.setText(post.getTitle());
-
             recyclerViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

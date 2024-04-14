@@ -4,42 +4,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#E5E5E6"
-    >
+    android:layout_height="match_parent">
+
     <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:id="@+id/toolbar"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/other_top_navigation"
-        >
-        <ImageView
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/return_icon"
-            android:id="@+id/back"
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            app:tint="#000" />
+        android:layout_height="60dp"
+        android:background="@drawable/other_top_navigation">
+        <androidx.appcompat.widget.Toolbar
 
-        <TextView
-            android:paddingLeft="15dp"
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:text="我的粉丝"
-            android:id="@+id/rec"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
 
+            <ImageView
+                android:src="@drawable/return_icon"
+                android:id="@+id/back"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                app:tint="#000" />
+
+            <TextView
+                android:paddingLeft="15dp"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:text="我的帖子"
+                android:id="@+id/rec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.appcompat.widget.Toolbar>
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/mypush_error"
         android:visibility="gone"
-        android:id="@+id/myfollow_error"
         android:layout_marginTop="60dp"
         android:gravity="center"
         android:textColor="#000"
@@ -50,17 +51,17 @@
         android:layout_height="wrap_content" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/mupush_swipe"
         android:visibility="gone"
-        android:id="@+id/myfollow_swipe"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-            android:id="@+id/myfollow_rv"
+            android:id="@+id/mypushrv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 
 </LinearLayout>
