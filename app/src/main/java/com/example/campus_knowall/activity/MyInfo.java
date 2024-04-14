@@ -2,6 +2,7 @@ package com.example.campus_knowall.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,12 +24,15 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobRelation;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class MyInfo extends AppCompatActivity {
     private ImageView back;
+    private Button focus;
     private TextView my_pushnum,my_comnum,my_nickname,usercreattime;
 
     private TextView info_title;
@@ -56,6 +60,46 @@ public class MyInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        focus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //关注监听
+                //获取本app登录用户
+                final User current_user = BmobUser.getCurrentUser(User.class);
+                //新建一个User类，其实是现在对应页面的用户（点进来的）
+                User this_user = new User();
+                //设置objectid
+                this_user.setObjectId(BmobUser.getCurrentUser(User.class).getObjectId());
+                BmobRelation relation = new BmobRelation();
+
+                focus.setText("已关注");
+                focus.setTag("1");
+                // 将这个用户列入关注列表里
+                // 添加到多对多关联中
+                relation.add(this_user);
+                current_user.setFocuId(relation);
+                current_user.increment("focusIdsum");
+
+                BmobRelation follow=new BmobRelation();
+                relation.add(current_user);
+                this_user.setFollowerId(relation);
+                this_user.increment("followerIdsum");
+
+                current_user.update(new UpdateListener() {
+                    @Override
+                    public void done(BmobException e) {
+                        if (e==null){
+                            Toast.makeText(MyInfo.this, "关注成功", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(MyInfo.this, "关注失败"+e, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
             }
         });
 
@@ -207,6 +251,8 @@ public class MyInfo extends AppCompatActivity {
        // editmyinfo = findViewById(R.id.editmyinfo);
         smartTabLayout = findViewById(R.id.myinfotab);
         viewPager = findViewById(R.id.myinfovp);
+
+        focus = findViewById(R.id.focus);
 
      //   focus_or_not = findViewById(R.id.focus);
     }

@@ -75,10 +75,10 @@ public class MyFollower extends AppCompatActivity {
 
     private void Refresh() {
 
-        //获取我发布的帖子  一对多
+        //获取我的粉丝(关注我的人)  一对多
         User user = BmobUser.getCurrentUser(User.class);
         BmobQuery<User> bmobQuery = new BmobQuery<>();
-        bmobQuery.addWhereEqualTo("author",user);
+        bmobQuery.addWhereEqualTo("focusId",user);
         bmobQuery.order("-createdAt");
         bmobQuery.findObjects(new FindListener<User>() {
             @Override

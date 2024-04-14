@@ -7,59 +7,51 @@
         <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/button_bacground.xml" value="0.1" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/button_background.xml" value="0.1" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/edit_background.xml" value="0.1" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_bottom.xml" value="0.19" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_button.xml" value="0.19" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_change.xml" value="0.19" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_edit.xml" value="0.19" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_fans_likes.xml" value="0.121" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_focus.xml" value="0.121" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_myinfo.xml" value="0.1945" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_ok.xml" value="0.19" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_top.xml" value="0.159" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/drawable/shape_1.xml" value="0.1525" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/a.xml" value="0.21422101449275363" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_login.xml" value="0.11518324607329843" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_main_team.xml" value="0.1" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_message.xml" value="0.21467391304347827" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_my.xml" value="0.21467391304347827" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_mycollect.xml" value="0.15" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_mycomunity.xml" value="0.16666666666666666" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_myfocus.xml" value="0.22" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_myfollower.xml" value="0.22" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_myinfo.xml" value="0.16666666666666666" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_mypush.xml" value="0.13924050632911392" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_pushcomunity.xml" value="0.22" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_pushcontent.xml" value="0.22" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_mycollect.xml" value="0.136" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_mycomunity.xml" value="0.1" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_myfocus.xml" value="0.1" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_myfollower.xml" value="0.1" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_myinfo.xml" value="0.1" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_mypush.xml" value="0.1" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_pushcomunity.xml" value="0.2" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_pushcontent.xml" value="0.2" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_recieve.xml" value="0.16666666666666666" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_recievecom.xml" value="0.22" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_recievecom.xml" value="0.1" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_recive.xml" value="0.19701086956521738" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_search.xml" value="0.20380434782608695" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_setting.xml" value="0.22" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_setting.xml" value="0.1" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_solash.xml" value="0.2033514492753623" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/choose_item.xml" value="0.20380434782608695" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/comunity_item.xml" value="0.20380434782608695" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/coordinatorlayout.xml" value="0.21422101449275363" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/foot_item.xml" value="0.18659420289855072" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_comunity.xml" value="0.16666666666666666" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_forum.xml" value="0.22" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_message.xml" value="0.21920289855072464" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_my.xml" value="0.3333333333333333" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_mycom.xml" value="0.3" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_mypush.xml" value="0.16666666666666666" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_push.xml" value="0.26666666666666666" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_recieve.xml" value="0.22" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_comunity.xml" value="0.6540697674418605" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_forum.xml" value="0.1" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_message.xml" value="0.1" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_my.xml" value="0.16041666666666668" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_mycom.xml" value="0.264" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_mypush.xml" value="0.4466666666666667" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_push.xml" value="0.23505434782608695" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_recieve.xml" value="0.1" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragment_team.xml" value="0.21920289855072464" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragmentchat.xml" value="0.14666666666666667" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragmentchat.xml" value="0.2" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/fragmenthome.xml" value="0.20380434782608695" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/mycollect_com.xml" value="0.20380434782608695" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/mycollect_com.xml" value="0.16799999999999998" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/mycollect_push.xml" value="0.20364583333333333" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/mycomunity_item.xml" value="0.20364583333333333" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/myfollower_item.xml" value="0.13323201621073963" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/myfollower_item.xml" value="0.24479166666666666" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/mypush_item.xml" value="0.20364583333333333" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/ord_item.xml" value="0.16666666666666666" />
-        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/ord_item2.xml" value="0.3" />
+        <entry key="..\:/Campus-Knowall/app/src/main/res/layout/ord_item2.xml" value="0.17291666666666666" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/pop_item.xml" value="0.20380434782608695" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/reg_choose.xml" value="0.20364583333333333" />
         <entry key="..\:/Campus-Knowall/app/src/main/res/layout/reg_help.xml" value="0.20364583333333333" />
