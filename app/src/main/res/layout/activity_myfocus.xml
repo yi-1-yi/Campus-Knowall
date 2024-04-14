@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5E5E6"
+    >
     <LinearLayout
         android:orientation="horizontal"
         android:gravity="center"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/other_top_navigation"
+        >
         <ImageView
             android:layout_marginLeft="10dp"
-            android:src="@drawable/back"
+            android:src="@drawable/return_icon"
             android:id="@+id/back"
             android:background="?android:attr/selectableItemBackground"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             app:tint="#000" />
 
         <TextView
@@ -29,8 +33,6 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
-
-
     </LinearLayout>
 
     <TextView
@@ -51,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
             android:id="@+id/myfocus_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

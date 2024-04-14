@@ -22,14 +22,13 @@
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.example.campus_knowall.BmobContentProvider"></provider>
-
+            android:authorities="com.example.campus_knowall.BmobContentProvider">
+        </provider>
         <activity
             android:name=".activity.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -51,5 +50,4 @@
 
 
     </application>
-
 </manifest>

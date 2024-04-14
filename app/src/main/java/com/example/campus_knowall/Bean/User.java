@@ -56,6 +56,23 @@ public class User extends BmobUser {
         this.focusIdsum = focusIdsum;
     }
 
+    private Integer followerIdsum=0;
+    private BmobRelation followerId;
+
+    public BmobRelation getFollowerId() {
+        return followerId;
+    }
+    public void setFollowerId(BmobRelation followerId) {
+        this.followerId = followerId;
+    }
+
+    public Integer getFollowerIdsum() {
+        return followerIdsum;
+    }
+    public void setFollowerIdsum(Integer followerIdsum) {
+        this.followerIdsum = followerIdsum;
+    }
+
    /* public user_followers getFollower_id() {
         return follower_id;
     }
