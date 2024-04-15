@@ -15,9 +15,9 @@ import cn.bmob.v3.BmobUser;
 
 public class Setting extends AppCompatActivity {
 
-        private Button loginout;
+    private Button loginout;
 
-        private ImageView back;
+    private ImageView back;
 
 
     @Override
@@ -27,21 +27,22 @@ public class Setting extends AppCompatActivity {
 
         initView();
 
-                loginout.setOnClickListener(new View.OnClickListener() {
+        loginout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BmobUser.logOut();
-                startActivity(new Intent(Setting.this,Login.class));
+                startActivity(new Intent(Setting.this, Login.class));
                 //
                 finish();
             }
         });
-                back.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        finish();
-                    }
-                });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void initView() {

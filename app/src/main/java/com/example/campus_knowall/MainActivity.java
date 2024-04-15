@@ -12,8 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private ForumFragment forumFragment;
-    private TeamFragment teamFragment;
-    private MessageFragment messageFragment;
+    private FragmentChat fragmentChat;
     private MyFragment myFragment;
     private ComFragment comFragment;
 
@@ -32,16 +31,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()== R.id.navigation_forum){
                     selectedFragment(0);
-                }else if(item.getItemId()== R.id.navigation_team){
+                }else if(item.getItemId()== R.id.navigation_chat){
                     selectedFragment(1);
-                }else if(item.getItemId()== R.id.navigation_message){
-                    selectedFragment(2);
                 }
-//                else if (item.getItemId()==R.id.navigation_com){
-//                    selectedFragment(7);
-//                }
                 else {
-                    selectedFragment(3);
+                    selectedFragment(2);
                 }
                 return  true;
             }
@@ -60,18 +54,11 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.show(forumFragment);
             }
         }else if(position==1){
-            if(teamFragment==null){
-                teamFragment=new TeamFragment();
-                fragmentTransaction.add(R.id.content,teamFragment);
+            if(fragmentChat==null){
+                fragmentChat=new FragmentChat();
+                fragmentTransaction.add(R.id.content,fragmentChat);
             }else{
-                fragmentTransaction.show(teamFragment);
-            }
-        }else if(position==2){
-            if(messageFragment==null){
-                messageFragment=new MessageFragment();
-                fragmentTransaction.add(R.id.content,messageFragment);
-            }else{
-                fragmentTransaction.show(messageFragment);
+                fragmentTransaction.show(fragmentChat);
             }
         }
 //        else if(position==7){
@@ -102,13 +89,10 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.hide(forumFragment);
         }
 
-        if(teamFragment!=null){
-            fragmentTransaction.hide(teamFragment);
+        if(fragmentChat!=null){
+            fragmentTransaction.hide(fragmentChat);
         }
 
-        if(messageFragment!=null){
-            fragmentTransaction.hide(messageFragment);
-        }
 
         if(myFragment!=null){
             fragmentTransaction.hide(myFragment);

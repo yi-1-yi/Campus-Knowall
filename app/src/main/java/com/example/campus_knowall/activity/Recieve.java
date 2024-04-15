@@ -1,7 +1,5 @@
 package com.example.campus_knowall.activity;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -24,14 +20,9 @@ import com.example.campus_knowall.Bean.Com;
 import com.example.campus_knowall.Bean.Post;
 import com.example.campus_knowall.Bean.User;
 import com.example.campus_knowall.ComFragment;
-import com.example.campus_knowall.ForumFragment;
-import com.example.campus_knowall.MessageFragment;
-import com.example.campus_knowall.MyFragment;
 import com.example.campus_knowall.R;
-import com.example.campus_knowall.TeamFragment;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;

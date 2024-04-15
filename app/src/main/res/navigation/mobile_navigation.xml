@@ -22,10 +22,4 @@
         android:name="com.example.campus_knowall.MyFragment"
         android:label="@string/title_home"
         tools:layout="@layout/activity_my" />
-
-    <fragment
-        android:id="@+id/navigation_com"
-        android:name="com.example.campus_knowall.ComFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_comunity" />
 </navigation>
