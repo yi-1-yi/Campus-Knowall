@@ -4,17 +4,13 @@
     <item
         android:id="@+id/navigation_forum"
         android:icon="@drawable/forum"
+        android:title="@string/title_post" />
+
+    <item
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/team"
         android:title="@string/title_forum" />
 
-    <item
-        android:id="@+id/navigation_team"
-        android:icon="@drawable/team"
-        android:title="@string/title_team" />
-
-    <item
-        android:id="@+id/navigation_message"
-        android:icon="@drawable/message"
-        android:title="@string/title_message" />
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/account"

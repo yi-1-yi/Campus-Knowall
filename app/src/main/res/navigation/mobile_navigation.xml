@@ -8,20 +8,15 @@
     <fragment
         android:id="@+id/navigation_forum"
         android:name="com.example.campus_knowall.ForumFragment"
+        android:label="@string/title_post"
+        tools:layout="@layout/fragment_forum" />
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.example.campus_knowall.FragmentChat"
         android:label="@string/title_forum"
-        tools:layout="@layout/activity_main" />
+        tools:layout="@layout/fragmentchat" />
 
-    <fragment
-        android:id="@+id/navigation_team"
-        android:name="com.example.campus_knowall.TeamFragment"
-        android:label="@string/title_team"
-        tools:layout="@layout/activity_main_team" />
-
-    <fragment
-        android:id="@+id/navigation_message"
-        android:name="com.example.campus_knowall.MessageFragment"
-        android:label="@string/title_message"
-        tools:layout="@layout/activity_message" />
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.campus_knowall.MyFragment"

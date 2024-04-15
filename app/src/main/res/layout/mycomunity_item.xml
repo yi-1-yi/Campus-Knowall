@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:textColor="#000"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:text="论坛介绍"
         android:id="@+id/c_info"
         android:layout_width="wrap_content"
@@ -36,23 +36,23 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="#000"
+            android:textColor="#4E4E4E"
             android:textSize="15sp"
             android:text="论坛主："
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-
-            android:textColor="#e90000"
+            android:textColor="#4E4E4E"
             android:textSize="15sp"
             android:text="loading.."
             android:id="@+id/c_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:background="@drawable/line"/>
 </LinearLayout>

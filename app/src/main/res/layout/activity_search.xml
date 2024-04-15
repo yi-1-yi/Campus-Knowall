@@ -8,19 +8,19 @@
 
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="70dp"
+        android:background="@drawable/other_top_navigation">
 
         <ImageView
-            android:scaleY="0.7"
-            android:scaleX="0.7"
-            android:src="@drawable/back"
+            android:src="@drawable/return_icon"
             android:id="@+id/back"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="22dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             app:tint="@color/black" />
         <EditText
             android:maxLines="1"

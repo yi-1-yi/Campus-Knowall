@@ -12,20 +12,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.campus_knowall.Bean.Post;
+import com.example.campus_knowall.Bean.User;
 import com.example.campus_knowall.R;
 import com.example.campus_knowall.activity.Login;
-import com.example.campus_knowall.activity.Recieve;
+import com.example.campus_knowall.activity.MyFollower;
 
 import java.util.List;
 
 import cn.bmob.v3.BmobUser;
 
-public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
+public class MyFollowerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private Context context;
-    private List<Post> data;
+    private List<User> data;
 
     private final int N_TYPE = 0;
     private final int F_TYPE = 1;
@@ -34,7 +33,7 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private Boolean isfootview = true;  //是否有footview
 
-    public MyPushAdapter(Context context,List<Post> data){
+    public MyFollowerAdapter(Context context, List<User> data){
         this.context = context;
         this.data = data;
     }
@@ -42,12 +41,12 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.mypush_item,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.myfollower_item,viewGroup,false);
         View footview = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.foot_item,viewGroup,false);
         if (i == F_TYPE){
-            return new RecyclerViewHolder(footview,F_TYPE);
+            return new MyFollowerAdapter.RecyclerViewHolder(footview,F_TYPE);
         }else {
-            return new RecyclerViewHolder(view,N_TYPE);
+            return new MyFollowerAdapter.RecyclerViewHolder(view,N_TYPE);
         }
     }
 
@@ -55,7 +54,7 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         if (isfootview&&(getItemViewType(i)) == F_TYPE){
             //底部加载提示
-            final RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) viewHolder;
+            final MyFollowerAdapter.RecyclerViewHolder recyclerViewHolder = (MyFollowerAdapter.RecyclerViewHolder) viewHolder;
             recyclerViewHolder.Loading.setText("加载中...");
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -67,12 +66,12 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             },2000);
         }else {
             //这是ord_item的内容
-            final RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) viewHolder;
-            final Post post = data.get(i);
-            recyclerViewHolder.nickname.setText(post.getNickname());
-            recyclerViewHolder.content.setText(post.getContent());
-            recyclerViewHolder.time.setText(post.getCreatedAt());
-            recyclerViewHolder.title.setText(post.getTitle());
+            final MyFollowerAdapter.RecyclerViewHolder recyclerViewHolder = (MyFollowerAdapter.RecyclerViewHolder) viewHolder;
+            final User myf = data.get(i);
+            recyclerViewHolder.avatar.setText(myf.getAvatar());
+            recyclerViewHolder.nickname.setText(myf.getNickname());
+            recyclerViewHolder.gender.setText(myf.getGender());
+
             recyclerViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -81,10 +80,10 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     if (BmobUser.getCurrentUser(BmobUser.class) != null){
 
                         //需要改动
-                        Intent in = new Intent(context, Recieve.class);
-                        in.putExtra("title",post.getTitle());
-                        in.putExtra("content",post.getContent());
-                        in.putExtra("time",post.getCreatedAt());
+                        Intent in = new Intent(context, MyFollower.class);
+                        in.putExtra("avatar",myf.getAvatar());
+                        in.putExtra("nickname",myf.getNickname());
+                        in.putExtra("gender",myf.getGender());
                         in.putExtra("id",data.get(position).getObjectId());
                         context.startActivity(in);
                     }else {
@@ -115,17 +114,16 @@ public class MyPushAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView title,nickname,content,time; //ord_item的TextView
+        public TextView avatar,nickname,gender; //ord_item的TextView
         public TextView Loading;
 
 
         public RecyclerViewHolder(View itemview, int view_type) {
             super(itemview);
             if (view_type == N_TYPE){
-                title=itemview.findViewById(R.id.mypush_title);
-                nickname = itemview.findViewById(R.id.mypush_nickname);
-                content = itemview.findViewById(R.id.mypush_content);
-                time = itemview.findViewById(R.id.mypush_time);
+                avatar=itemview.findViewById(R.id.myfollower_avatar);
+                nickname = itemview.findViewById(R.id.myfollower_nickname);
+                gender = itemview.findViewById(R.id.myfollower_gender);
             }else if(view_type == F_TYPE){
                 Loading = itemview.findViewById(R.id.footText);
             }

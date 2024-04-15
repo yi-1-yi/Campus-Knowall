@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:orientation="vertical">
+    <!--普通样式-->
+    <!--头像、昵称-->
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+        <RelativeLayout
+            android:layout_width="70dp"
+            android:layout_height="70dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/myfollower_avatar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/fczlm" />
+            <ImageView
+                android:id="@+id/isshowrz"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/rz_gr"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:id="@+id/myfollower_nickname"
+                android:textColor="#000"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:text="nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/my_level"-->
+                <!--                    android:src="@drawable/l9"-->
+                <!--                    android:layout_width="40dp"-->
+                <!--                    android:layout_height="30dp"-->
+                <!--                    app:tint="#fc5c00"/>-->
+
+                <ImageView
+                    android:id="@+id/myfollower_gender"
+                    android:src="@drawable/gril"
+                    android:layout_width="30dp"
+                    android:layout_height="22dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <!--关注，编辑-->
+        <LinearLayout
+            android:gravity="right|center_vertical"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/focus"
+                android:textColor="#303132"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:background="@drawable/shape_focus"
+                android:text="移除"
+                android:layout_marginRight="8dp"
+                android:layout_width="80dp"
+                android:layout_height="35dp" />
+            <Button
+                android:id="@+id/editmyinfo"
+                android:textColor="#303132"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:background="@drawable/shape_focus"
+                android:text="关注"
+                android:layout_width="85dp"
+                android:layout_height="35dp" />
+            <!--  android:visibility="gone"-->
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

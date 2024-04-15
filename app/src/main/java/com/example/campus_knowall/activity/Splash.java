@@ -25,7 +25,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         Timer timer = new Timer();
-        timer.schedule(timetast, 2000);
+        timer.schedule(timetast, 1000);
         Bmob.initialize(this, "417e88a4dde438927b0c164bb450d7e3");
     }
 

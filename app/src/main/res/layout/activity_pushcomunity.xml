@@ -10,14 +10,15 @@
 
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/other_top_navigation">
 
         <ImageView
-            android:src="@drawable/back"
+            android:src="@drawable/return_icon"
             android:id="@+id/back"
             android:background="?android:attr/selectableItemBackground"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="22dp"
+            android:layout_height="wrap_content"
             app:tint="#000" />
 
         <TextView
@@ -63,7 +64,9 @@
 
     <Button
         android:id="@+id/pushcom"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="12dp"
         android:textSize="20sp"
         android:textColor="#fff"
         android:background="@drawable/shape_button"

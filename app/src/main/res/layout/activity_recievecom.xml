@@ -11,22 +11,23 @@
         android:gravity="center"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/other_top_navigation">
 
         <ImageView
             android:layout_marginLeft="10dp"
-            android:src="@drawable/back"
+            android:src="@drawable/return_icon"
             android:id="@+id/com_back"
             android:background="?android:attr/selectableItemBackground"
-            android:layout_width="wrap_content"
+            android:layout_width="22dp"
             android:layout_height="wrap_content"
             app:tint="#000" />
 
+        <!--论坛名称-->
         <TextView
             android:paddingLeft="15dp"
             android:textSize="20sp"
             android:textColor="#000"
-            android:text="热门论坛"
             android:id="@+id/rec"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -35,9 +36,9 @@
         <ImageView
             android:id="@+id/reccom_collect"
             android:layout_marginRight="10dp"
-            android:src="@drawable/sc_normal"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:src="@drawable/collect"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             app:tint="#000" />
 
     </LinearLayout>
@@ -63,7 +64,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:textColor="#000"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:text="论坛介绍"
             android:id="@+id/rec_cinfo"
             android:layout_width="wrap_content"
@@ -74,24 +75,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:textColor="#000"
+                android:textColor="#6E6A6A"
                 android:textSize="15sp"
                 android:text="论坛主："
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#e90000"
+                android:textColor="#6E6A6A"
                 android:textSize="15sp"
-                android:text="loading.."
                 android:id="@+id/rec_cuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

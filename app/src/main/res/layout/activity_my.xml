@@ -21,7 +21,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#f2c201"
+                android:background="#86D7E6"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -104,17 +104,17 @@
                                     android:layout_height="wrap_content">
 
                                     <TextView
-                                        android:id="@+id/username"
+                                        android:id="@+id/nickname000"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="username"
+                                        android:text="nickname"
                                         android:textColor="#000"
                                         android:textSize="25sp"
                                         android:textStyle="bold" />
                                     <ImageView
                                         android:layout_gravity="center_vertical"
                                         android:id="@+id/mine_gender"
-                                        android:src="@drawable/man"
+                                        android:src="@drawable/gril"
                                         android:layout_width="30dp"
                                         android:layout_height="22dp" />
 
@@ -173,7 +173,7 @@
                     android:textColor="#f2c201"
                     android:textStyle="bold"
                     android:textSize="25sp"
-                    android:text="196.2W"
+                    android:text="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -207,7 +207,7 @@
                     android:textColor="#f2c201"
                     android:textStyle="bold"
                     android:textSize="25sp"
-                    android:text="36"
+                    android:text="2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView

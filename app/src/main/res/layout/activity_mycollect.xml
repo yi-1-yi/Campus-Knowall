@@ -12,7 +12,8 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
+            android:background="@drawable/other_top_navigation"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:toolbarId="@+id/toolbar">
@@ -25,12 +26,11 @@
 
                 <ImageView
                     android:id="@+id/back"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="22dp"
+                    android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
-                    android:scaleX="0.5"
-                    android:scaleY="0.5"
-                    android:src="@drawable/back"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/return_icon"
                     app:tint="#000" />
 
                 <TextView

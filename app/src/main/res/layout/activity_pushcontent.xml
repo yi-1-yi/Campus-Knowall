@@ -14,11 +14,11 @@
         android:background="@drawable/other_top_navigation">
 
         <ImageView
-            android:src="@drawable/back"
+            android:src="@drawable/return_icon"
             android:id="@+id/back"
             android:background="?android:attr/selectableItemBackground"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="22dp"
+            android:layout_height="wrap_content"
             app:tint="#000" />
 
         <TextView
