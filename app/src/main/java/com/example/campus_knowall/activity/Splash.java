@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.ActionMenuItemView;
 
 import com.example.campus_knowall.Bean.User;
 
@@ -18,6 +19,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 
 public class Splash extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

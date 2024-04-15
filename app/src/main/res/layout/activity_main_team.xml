@@ -8,16 +8,16 @@
 
     <FrameLayout
         android:id="@+id/content"
-        android:layout_above="@id/bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"/>
+        android:layout_above="@id/bottom"
+        android:background="#FFFFFF" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom ="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:background="#E2EDF1"
         app:menu="@menu/bottom_nav_menu" />

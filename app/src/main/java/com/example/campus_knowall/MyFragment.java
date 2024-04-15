@@ -64,7 +64,7 @@ public class MyFragment extends Fragment {
         getMyinfo();
 
         //设置粉丝和关注数的字体
-        setnumfont();
+//        setnumfont();
 
         //获取我的关注别人的数量
         getMyfocusnum();
@@ -161,12 +161,12 @@ public class MyFragment extends Fragment {
         });
     }
 
-    private void setnumfont() { //Gorlock
-        Typeface fans = Typeface.createFromAsset(getActivity().getAssets(),"Headache.ttf");
-        Typeface focus = Typeface.createFromAsset(getActivity().getAssets(),"Headache.ttf");
-        fansnum.setTypeface(fans);
-        myfocusnum.setTypeface(focus);
-    }
+//    private void setnumfont() { //Gorlock
+//        Typeface fans = Typeface.createFromAsset(getActivity().getAssets(),"Headache.ttf");
+//        Typeface focus = Typeface.createFromAsset(getActivity().getAssets(),"Headache.ttf");
+//        fansnum.setTypeface(fans);
+//        myfocusnum.setTypeface(focus);
+//    }
 
     private void getMyinfo() {
         //加载个人信息

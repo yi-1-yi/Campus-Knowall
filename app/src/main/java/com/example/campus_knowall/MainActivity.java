@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private TeamFragment teamFragment;
     private MessageFragment messageFragment;
     private MyFragment myFragment;
+    private ComFragment comFragment;
 
 
     @Override
@@ -35,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment(1);
                 }else if(item.getItemId()== R.id.navigation_message){
                     selectedFragment(2);
-                }else {
+                }
+//                else if (item.getItemId()==R.id.navigation_com){
+//                    selectedFragment(7);
+//                }
+                else {
                     selectedFragment(3);
                 }
                 return  true;
@@ -68,7 +73,19 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 fragmentTransaction.show(messageFragment);
             }
-        }else{
+        }
+//        else if(position==7){
+//            if(comFragment==null){
+//                comFragment=new ComFragment();
+//                Bundle args = new Bundle();
+//                args.putString("id", "value"); // 替换"key"和"value"为你要传递的参数名和值
+//                comFragment.setArguments(args);
+//                fragmentTransaction.add(R.id.content,comFragment);
+//            }else{
+//                fragmentTransaction.show(comFragment);
+//            }
+//        }
+        else{
             if(myFragment==null){
                 myFragment=new MyFragment();
                 fragmentTransaction.add(R.id.content,myFragment);
@@ -97,5 +114,8 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.hide(myFragment);
         }
 
+//        if(comFragment!=null){
+//            fragmentTransaction.hide(comFragment);
+//        }
     }
 }

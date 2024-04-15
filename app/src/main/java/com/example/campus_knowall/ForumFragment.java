@@ -96,7 +96,6 @@ public class ForumFragment extends Fragment {
                     swipeRefreshLayout.setRefreshing(false);
                     Toast.makeText(getActivity(),"获取数据失败"+e,Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }
