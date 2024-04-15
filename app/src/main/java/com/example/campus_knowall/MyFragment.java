@@ -19,7 +19,6 @@ import com.example.campus_knowall.activity.MyCollect;
 import com.example.campus_knowall.activity.MyComunity;
 import com.example.campus_knowall.activity.MyFocus;
 import com.example.campus_knowall.activity.MyFollower;
-import com.example.campus_knowall.activity.MyInfo;
 import com.example.campus_knowall.activity.MyPush;
 import com.example.campus_knowall.activity.Setting;
 
@@ -31,6 +30,7 @@ import cn.bmob.v3.listener.CountListener;
 import cn.bmob.v3.listener.QueryListener;
 
 public class MyFragment extends Fragment {
+
     private TextView nickname;
 
     private LinearLayout myinfo;
@@ -47,7 +47,6 @@ public class MyFragment extends Fragment {
     private TextView fansnum;
 
     private ImageView mine_gender;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -91,7 +90,7 @@ public class MyFragment extends Fragment {
         });
 
 
-        myinfo.setOnClickListener(new View.OnClickListener() {
+       /* myinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //跳转到我的信息界面
@@ -100,7 +99,7 @@ public class MyFragment extends Fragment {
                 intent.putExtra("user_onlyid",user.getObjectId());
                 startActivity(intent);
             }
-        });
+        });*/
 
         mypush.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,8 +189,7 @@ public class MyFragment extends Fragment {
     }
 
     private void initView() {
-        nickname = getActivity().findViewById(R.id.nickname);
-//      loginout = getActivity().findViewById(R.id.loginout);
+        nickname = getActivity().findViewById(R.id.nickname000);
         myinfo = getActivity().findViewById(R.id.myinfo);
         mypush = getActivity().findViewById(R.id.mypush);
         mycomunity = getActivity().findViewById(R.id.mycomunity);

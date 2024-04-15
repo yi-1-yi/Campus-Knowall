@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private ForumFragment forumFragment;
-    private TeamFragment teamFragment;
+    private FragmentChat fragmentChat;
     private MyFragment myFragment;
 
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()== R.id.navigation_forum){
                     selectedFragment(0);
-                }else if(item.getItemId()== R.id.navigation_team){
+                }else if(item.getItemId()== R.id.navigation_chat){
                     selectedFragment(1);
                 }else {
                     selectedFragment(2);
@@ -52,11 +52,11 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.show(forumFragment);
             }
         }else if(position==1){
-            if(teamFragment==null){
-                teamFragment=new TeamFragment();
-                fragmentTransaction.add(R.id.content,teamFragment);
+            if(fragmentChat==null){
+                fragmentChat=new FragmentChat();
+                fragmentTransaction.add(R.id.content,fragmentChat);
             }else{
-                fragmentTransaction.show(teamFragment);
+                fragmentTransaction.show(fragmentChat);
             }
         }else{
             if(myFragment==null){
@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.hide(forumFragment);
         }
 
-        if(teamFragment!=null){
-            fragmentTransaction.hide(teamFragment);
+        if(fragmentChat!=null){
+            fragmentTransaction.hide(fragmentChat);
         }
 
         if(myFragment!=null){

@@ -70,7 +70,7 @@ public class RecieveCom extends AppCompatActivity {
                                 @Override
                                 public void done(BmobException e) {
                                     if (e==null){
-                                        reccom_collect.setImageResource(R.drawable.shoucang_black);
+                                        reccom_collect.setImageResource(R.drawable.collection);
                                         Toast.makeText(RecieveCom.this, "收藏成功", Toast.LENGTH_SHORT).show();
                                     }else {
                                         Toast.makeText(RecieveCom.this, "收藏失败", Toast.LENGTH_SHORT).show();
@@ -119,7 +119,7 @@ public class RecieveCom extends AppCompatActivity {
             public void done(Comunity comunity, BmobException e) {
                 if (comunity.getIsrelated().equals("1")){
                     //已被收藏
-                    reccom_collect.setImageResource(R.drawable.shoucang_black);
+                    reccom_collect.setImageResource(R.drawable.collection);
                 }else {
 
                 }

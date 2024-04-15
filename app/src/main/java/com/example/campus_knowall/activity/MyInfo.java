@@ -170,8 +170,8 @@ public class MyInfo extends AppCompatActivity {
             @Override
             public void done(User user, BmobException e) {
                 if (e==null){
-                    info_title.setText(user.getUsername());
-                    my_nickname.setText(user.getNickname());
+                   /* info_title.setText(user.getUsername());*/
+                   /* my_nickname.setText(user.getNickname());*/
                    // followeList_id = user.getFollower_id().getObjectId();
                     if (user.getGender().equals("man")){
                         my_gender.setImageResource(R.drawable.man);
@@ -224,7 +224,7 @@ public class MyInfo extends AppCompatActivity {
             @Override
             public void done(User user, BmobException e) {
                 if (e==null){
-                    info_title.setText(user.getUsername());
+                   /* info_title.setText(user.getUsername());*/
                     my_nickname.setText(user.getNickname());
                     //followeList_id = user.getFollower_id().getObjectId();
                     if (user.getGender().equals("man")){
@@ -244,14 +244,13 @@ public class MyInfo extends AppCompatActivity {
         back = findViewById(R.id.back);
 //        my_pushnum = findViewById(R.id.my_pushnum);
 //        my_comnum = findViewById(R.id.my_comnum);
-        my_nickname = findViewById(R.id.mynickname);
+        my_nickname = findViewById(R.id.nickname001);
         my_gender = findViewById(R.id.my_gender);
         info_title = findViewById(R.id.info_title);
         //focus = findViewById(R.id.focus);
        // editmyinfo = findViewById(R.id.editmyinfo);
         smartTabLayout = findViewById(R.id.myinfotab);
         viewPager = findViewById(R.id.myinfovp);
-
         focus = findViewById(R.id.focus);
 
      //   focus_or_not = findViewById(R.id.focus);
