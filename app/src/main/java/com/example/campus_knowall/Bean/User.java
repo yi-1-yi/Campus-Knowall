@@ -80,4 +80,26 @@ public class User extends BmobUser {
     public void setFollower_id(user_followers follower_id) {
         this.follower_id = follower_id;
     }*/
+
+    public void removeFollower(BmobRelation fellow)
+    {
+        this.followerId.remove(fellow);
+        this.followerIdsum--;
+    }
+    public void removeFocus(BmobRelation idol)
+    {
+        this.focuId.remove(idol);
+        this.focusIdsum--;
+    }
+
+    private String isRelated;
+
+    public String getIsrelated() {
+        return isRelated;
+    }
+
+    public void setIsrelated(String isrelated) {
+        this.isRelated = isrelated;
+    }
+
 }

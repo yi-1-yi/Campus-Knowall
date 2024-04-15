@@ -10,8 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.campus_knowall.Adapter.MycollectpushAdapter;
 import com.example.campus_knowall.Bean.Comunity;
 import com.example.campus_knowall.Bean.Post;
 import com.example.campus_knowall.Bean.User;
@@ -25,6 +27,7 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobPointer;
 import cn.bmob.v3.datatype.BmobRelation;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
@@ -34,30 +37,126 @@ import cn.bmob.v3.listener.UpdateListener;
 public class MyInfo extends AppCompatActivity {
     private ImageView back;
     private Button focus;
-    private TextView my_pushnum,my_comnum,mynickname,usercreattime;
+    private TextView my_pushnum,my_comnum,my_nickname,usercreattime;
 
     private TextView info_title;
     private ImageView my_gender;
 
-    private String user_onlyid;
+//    private String user_onlyid;
     private SmartTabLayout smartTabLayout;
     private ViewPager viewPager;
     private FragmentStatePagerItemAdapter fragadapter;
-    private String this_user_onlyid;
+
+    String user_onlyid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinfo);
-
-        final Intent in = getIntent();
-        this_user_onlyid = in.getStringExtra("user_onlyid");
-
+        Intent intent = getIntent();
+        user_onlyid = intent.getStringExtra("user_onlyid");
         initView();
-
-        //getmyInfo();
-
         getotherInfo();
+
+
+        //收藏监听
+        focus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent in = getIntent();
+                String Id = in.getStringExtra("user_onlyid");
+                if(Id==null)
+                {
+                    Toast.makeText(MyInfo.this, "参数呢？", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MyInfo.this, "参数是"+Id, Toast.LENGTH_SHORT).show();
+                }
+
+                BmobQuery<User> bmobQuery = new BmobQuery<>();
+                bmobQuery.getObject(Id, new QueryListener<User>()
+                {
+                    @Override
+                    public void done(User worker, BmobException e) {
+                        if(worker.getIsrelated()==null)
+                        {
+                            Toast.makeText(MyInfo.this, "查了个寂寞", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(MyInfo.this, "你是dd", Toast.LENGTH_SHORT).show();
+                        }
+                        if (worker.getIsrelated().equals("0")) {
+
+
+
+
+                            Intent in = getIntent();
+                            String Id = in.getStringExtra("user_onlyid");
+                            User user = BmobUser.getCurrentUser(User.class);
+                            User woq = new User();
+                            woq.setObjectId(Id);
+                            woq.setIsrelated("1");
+
+                            BmobRelation relation = new BmobRelation();
+                            relation.add(user);
+                            woq.setFollowerId(relation);
+                            woq.increment("followerIdsum");
+
+                            BmobRelation focusrelation = new BmobRelation();
+                            focusrelation.add(woq);
+                            user.setFocuId(focusrelation);
+                            user.increment("focusIdsum");
+
+
+                            woq.update(new UpdateListener() {
+                                @Override
+                                public void done(BmobException e) {
+                                    if (e==null){
+                                        focus.setText("已关注");
+                                        Toast.makeText(MyInfo.this, "关注成功", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        Toast.makeText(MyInfo.this, "关注失败", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            Intent in = getIntent();
+                            String Id = in.getStringExtra("user_onlyid");
+                            User user = BmobUser.getCurrentUser(User.class);
+                            User woq = new User();
+                            woq.setObjectId(Id);
+                            woq.setIsrelated("0");
+
+                            BmobRelation relation = new BmobRelation();
+                            relation.remove(user);
+                            woq.removeFollower(relation);
+
+                            BmobRelation focusrelation =new BmobRelation();
+                            focusrelation.remove(woq);
+                            user.removeFocus(focusrelation);
+
+                            woq.update(new UpdateListener() {
+                                @Override
+                                public void done(BmobException e) {
+                                    if (e==null){
+                                        focus.setText("关注");
+                                        Toast.makeText(MyInfo.this, "取消关注成功", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        Toast.makeText(MyInfo.this, "取消关注失败", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+
+            }
+        });
+
 
         //配置veiwpager
         viewPager.setOffscreenPageLimit(3);
@@ -72,42 +171,6 @@ public class MyInfo extends AppCompatActivity {
             }
         });
 
-        focus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //关注监听
-                //获取本app登录用户
-                final User current_user = BmobUser.getCurrentUser(User.class);
-                //新建一个User类，其实是现在对应页面的用户（点进来的）
-                User this_user = new User();
-                //设置objectid
-                this_user.setObjectId(BmobUser.getCurrentUser(User.class).getObjectId());
-                BmobRelation relation = new BmobRelation();
-                focus.setText("已关注");
-                focus.setTag("1");
-                // 将这个用户列入关注列表里
-                // 添加到多对多关联中
-                relation.add(this_user);
-                current_user.setFocuId(relation);
-                current_user.increment("focusIdsum");
-
-                BmobRelation follow=new BmobRelation();
-                relation.add(current_user);
-                this_user.setFollowerId(relation);
-                this_user.increment("followerIdsum");
-
-                current_user.update(new UpdateListener() {
-                    @Override
-                    public void done(BmobException e) {
-                        if (e==null){
-                            Toast.makeText(MyInfo.this, "关注成功", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(MyInfo.this, "关注失败"+e, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        });
 
     }
 
@@ -166,19 +229,18 @@ public class MyInfo extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void getotherInfo() {
         BmobQuery<User> bmobQuery = new BmobQuery<>();
         bmobQuery.include("follower_id");
-        bmobQuery.getObject(this_user_onlyid, new QueryListener<User>() {
+        bmobQuery.getObject(user_onlyid, new QueryListener<User>() {
             @Override
             public void done(User user, BmobException e) {
                 if (e==null){
-                   /* info_title.setText(user.getUsername());*/
-                    mynickname.setText(user.getNickname());
-                   // followeList_id = user.getFollower_id().getObjectId();
+                    /* info_title.setText(user.getUsername());*/
+                    my_nickname.setText(user.getNickname());
+                    // followeList_id = user.getFollower_id().getObjectId();
                     if (user.getGender().equals("man")){
                         my_gender.setImageResource(R.drawable.man);
                     }else {
@@ -231,7 +293,7 @@ public class MyInfo extends AppCompatActivity {
             public void done(User user, BmobException e) {
                 if (e==null){
                    /* info_title.setText(user.getUsername());*/
-                    mynickname.setText(user.getNickname());
+                    my_nickname.setText(user.getNickname());
                     //followeList_id = user.getFollower_id().getObjectId();
                     if (user.getGender().equals("man")){
                         my_gender.setImageResource(R.drawable.man);
@@ -239,7 +301,6 @@ public class MyInfo extends AppCompatActivity {
                         my_gender.setImageResource(R.drawable.gril);
                     }
                 } //Toast.makeText(MyInfo.this, "加载失败", Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -250,10 +311,9 @@ public class MyInfo extends AppCompatActivity {
         back = findViewById(R.id.back);
 //        my_pushnum = findViewById(R.id.my_pushnum);
 //        my_comnum = findViewById(R.id.my_comnum);
-        mynickname = findViewById(R.id.nickname001);
+        my_nickname = findViewById(R.id.nickname001);
         my_gender = findViewById(R.id.my_gender);
         info_title = findViewById(R.id.info_title);
-        //focus = findViewById(R.id.focus);
        // editmyinfo = findViewById(R.id.editmyinfo);
         smartTabLayout = findViewById(R.id.myinfotab);
         viewPager = findViewById(R.id.myinfovp);
@@ -261,4 +321,8 @@ public class MyInfo extends AppCompatActivity {
 
      //   focus_or_not = findViewById(R.id.focus);
     }
+
+
+
 }
+
