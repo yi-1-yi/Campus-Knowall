@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/other_top_navigation">
+
+        <ImageView
+            android:src="@drawable/back"
+            android:id="@+id/back"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:tint="#000" />
+
+        <TextView
+            android:id="@+id/rec"
+            android:paddingLeft="15dp"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:text="回复帖子"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <EditText
+            android:id="@+id/com"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:hint="请输入回复的内容..."
+            android:lines="10"
+            android:textSize="20sp"
+            android:textColorHint="#969696" />
+    </LinearLayout>
+
+    <Button
+        android:layout_margin="10dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:background="@drawable/button_background"
+        android:id="@+id/pushc"
+        android:text="回 复"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
