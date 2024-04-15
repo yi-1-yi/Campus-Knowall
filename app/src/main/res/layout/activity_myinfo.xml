@@ -140,10 +140,10 @@
                             android:textSize="16sp"
                             android:background="@drawable/shape_focus"
                             android:text="关注"
-                            android:layout_marginRight="8dp"
+                            android:layout_marginRight="10dp"
                             android:layout_width="80dp"
                             android:layout_height="35dp" />
-                        <Button
+                        <!--<Button
                             android:id="@+id/editmyinfo"
                             android:textColor="#303132"
                             android:textStyle="bold"
@@ -152,8 +152,8 @@
                             android:text="编辑资料"
                             android:layout_width="85dp"
                             android:layout_height="35dp" />
-                      <!--  android:visibility="gone"-->
-
+                      &lt;!&ndash;  android:visibility="gone"&ndash;&gt;
+-->
                     </LinearLayout>
             </LinearLayout>
 

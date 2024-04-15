@@ -78,10 +78,6 @@ public class Search extends AppCompatActivity {
             @Override
             public void run() {
                 String want = searchcontent.getText().toString().trim();
-
-
-
-
                 BmobQuery<Post> bmobQuery = new BmobQuery<>();
                 // 使用contains进行模糊查询
                 bmobQuery.addWhereContains("content", want);

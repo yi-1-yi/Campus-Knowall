@@ -1,5 +1,6 @@
 package com.example.campus_knowall.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +34,7 @@ import cn.bmob.v3.listener.UpdateListener;
 public class MyInfo extends AppCompatActivity {
     private ImageView back;
     private Button focus;
-    private TextView my_pushnum,my_comnum,my_nickname,usercreattime;
+    private TextView my_pushnum,my_comnum,mynickname,usercreattime;
 
     private TextView info_title;
     private ImageView my_gender;
@@ -42,13 +43,21 @@ public class MyInfo extends AppCompatActivity {
     private SmartTabLayout smartTabLayout;
     private ViewPager viewPager;
     private FragmentStatePagerItemAdapter fragadapter;
+    private String this_user_onlyid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinfo);
 
+        final Intent in = getIntent();
+        this_user_onlyid = in.getStringExtra("user_onlyid");
+
         initView();
+
+        //getmyInfo();
+
+        getotherInfo();
 
         //配置veiwpager
         viewPager.setOffscreenPageLimit(3);
@@ -74,7 +83,6 @@ public class MyInfo extends AppCompatActivity {
                 //设置objectid
                 this_user.setObjectId(BmobUser.getCurrentUser(User.class).getObjectId());
                 BmobRelation relation = new BmobRelation();
-
                 focus.setText("已关注");
                 focus.setTag("1");
                 // 将这个用户列入关注列表里
@@ -98,8 +106,6 @@ public class MyInfo extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
         });
 
@@ -166,12 +172,12 @@ public class MyInfo extends AppCompatActivity {
     private void getotherInfo() {
         BmobQuery<User> bmobQuery = new BmobQuery<>();
         bmobQuery.include("follower_id");
-        bmobQuery.getObject(user_onlyid, new QueryListener<User>() {
+        bmobQuery.getObject(this_user_onlyid, new QueryListener<User>() {
             @Override
             public void done(User user, BmobException e) {
                 if (e==null){
                    /* info_title.setText(user.getUsername());*/
-                   /* my_nickname.setText(user.getNickname());*/
+                    mynickname.setText(user.getNickname());
                    // followeList_id = user.getFollower_id().getObjectId();
                     if (user.getGender().equals("man")){
                         my_gender.setImageResource(R.drawable.man);
@@ -179,7 +185,7 @@ public class MyInfo extends AppCompatActivity {
                         my_gender.setImageResource(R.drawable.gril);
                     }
                 }else {
-                    //Toast.makeText(MyInfo.this, "加载失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyInfo.this, "加载失败", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -225,7 +231,7 @@ public class MyInfo extends AppCompatActivity {
             public void done(User user, BmobException e) {
                 if (e==null){
                    /* info_title.setText(user.getUsername());*/
-                    my_nickname.setText(user.getNickname());
+                    mynickname.setText(user.getNickname());
                     //followeList_id = user.getFollower_id().getObjectId();
                     if (user.getGender().equals("man")){
                         my_gender.setImageResource(R.drawable.man);
@@ -244,7 +250,7 @@ public class MyInfo extends AppCompatActivity {
         back = findViewById(R.id.back);
 //        my_pushnum = findViewById(R.id.my_pushnum);
 //        my_comnum = findViewById(R.id.my_comnum);
-        my_nickname = findViewById(R.id.nickname001);
+        mynickname = findViewById(R.id.nickname001);
         my_gender = findViewById(R.id.my_gender);
         info_title = findViewById(R.id.info_title);
         //focus = findViewById(R.id.focus);

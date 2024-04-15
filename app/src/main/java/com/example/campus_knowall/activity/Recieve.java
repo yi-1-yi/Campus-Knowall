@@ -74,7 +74,7 @@ public class Recieve extends AppCompatActivity {
         });
 
 //        关注按钮的监听
-        focus_or_not.setOnClickListener(new View.OnClickListener() {
+/*        focus_or_not.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //关注监听
@@ -106,7 +106,7 @@ public class Recieve extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
         //收藏监听
         rec_collect.setOnClickListener(new View.OnClickListener() {
