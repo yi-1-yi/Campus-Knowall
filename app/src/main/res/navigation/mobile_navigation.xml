@@ -8,14 +8,8 @@
     <fragment
         android:id="@+id/navigation_forum"
         android:name="com.example.campus_knowall.ForumFragment"
-        android:label="@string/title_post"
-        tools:layout="@layout/fragment_forum" />
-
-    <fragment
-        android:id="@+id/navigation_chat"
-        android:name="com.example.campus_knowall.FragmentChat"
         android:label="@string/title_forum"
-        tools:layout="@layout/fragmentchat" />
+        tools:layout="@layout/fragment_forum" />
 
     <fragment
         android:id="@+id/navigation_home"

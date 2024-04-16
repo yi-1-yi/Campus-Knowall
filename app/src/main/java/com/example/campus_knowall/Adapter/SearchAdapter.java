@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private Boolean isfootview = true;  //是否有footview
 
+    private OnItemClickListener itemClickListener;
 
     public SearchAdapter(Context context,List<Post> data){
         this.context = context;
@@ -111,6 +113,14 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             return data.size();
         }
         return Max_num;
+    }
+
+    public void setItemClickListener(OnItemClickListener ItemClickListener) {
+        this.itemClickListener=itemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Post post);
     }
 
     private class RecyclerViewHolder extends RecyclerView.ViewHolder {

@@ -91,7 +91,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="用户名"
-                        android:textSize="20sp" />
+                        android:textColor="#656565"
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/time"
@@ -101,7 +102,8 @@
                         android:layout_toRightOf="@+id/username"
                         android:gravity="center_vertical"
                         android:text="时间"
-                        android:textSize="20sp" />
+                        android:textSize="15sp"
+                        android:textColor="#656565"/>
                 </LinearLayout>
 
                 <Button

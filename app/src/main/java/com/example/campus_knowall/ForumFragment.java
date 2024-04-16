@@ -67,7 +67,7 @@ public class ForumFragment extends Fragment {
         homesearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),Search.class));
+                startActivity(new Intent(getActivity(), Search.class));
             }
         });
         imageButton.setOnClickListener(new View.OnClickListener() {

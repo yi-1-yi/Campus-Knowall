@@ -4,11 +4,6 @@
     <item
         android:id="@+id/navigation_forum"
         android:icon="@drawable/forum"
-        android:title="@string/title_post" />
-
-    <item
-        android:id="@+id/navigation_chat"
-        android:icon="@drawable/team"
         android:title="@string/title_forum" />
 
     <item

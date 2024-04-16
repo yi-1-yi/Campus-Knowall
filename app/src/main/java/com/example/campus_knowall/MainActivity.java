@@ -12,7 +12,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private ForumFragment forumFragment;
-    private FragmentChat fragmentChat;
     private MyFragment myFragment;
     private ComFragment comFragment;
 
@@ -31,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()== R.id.navigation_forum){
                     selectedFragment(0);
-                }else if(item.getItemId()== R.id.navigation_chat){
-                    selectedFragment(1);
                 }
                 else {
                     selectedFragment(2);
@@ -52,13 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.add(R.id.content,forumFragment);
             }else{
                 fragmentTransaction.show(forumFragment);
-            }
-        }else if(position==1){
-            if(fragmentChat==null){
-                fragmentChat=new FragmentChat();
-                fragmentTransaction.add(R.id.content,fragmentChat);
-            }else{
-                fragmentTransaction.show(fragmentChat);
             }
         }
 //        else if(position==7){
@@ -88,11 +78,6 @@ public class MainActivity extends AppCompatActivity {
         if(forumFragment!=null){
             fragmentTransaction.hide(forumFragment);
         }
-
-        if(fragmentChat!=null){
-            fragmentTransaction.hide(fragmentChat);
-        }
-
 
         if(myFragment!=null){
             fragmentTransaction.hide(myFragment);
