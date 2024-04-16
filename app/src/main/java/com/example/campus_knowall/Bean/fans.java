@@ -37,13 +37,13 @@ public class fans extends BmobObject {
     public void removeFan(BmobRelation hook)
     {
         this.setFollowerId(hook);
-        this.increment("followerIdsum",-1);
+        this.followerIdsum--;
     }
 
     public void addFan(BmobRelation hook)
     {
         this.setFollowerId(hook);
-        this.increment("followerIdsum",1);
+        this.followerIdsum++;
     }
 
 

@@ -198,6 +198,7 @@
                     android:layout_height="45dp">
 
                     <TextView
+                        android:id="@+id/fans_number"
                         android:layout_marginLeft="20dp"
                         android:gravity="center_vertical"
                         android:textSize="22sp"
@@ -216,6 +217,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp" />
                     <TextView
+                        android:id="@+id/focus_number"
                         android:layout_marginLeft="18dp"
                         android:gravity="center_vertical"
                         android:textSize="22sp"

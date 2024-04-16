@@ -49,6 +49,10 @@ public class MyInfo extends AppCompatActivity {
     private ViewPager viewPager;
     private FragmentStatePagerItemAdapter fragadapter;
 
+    private TextView fansnumber;
+    private TextView focusnumber;
+
+
     String user_onlyid;
     User gethim;
     fans hisfan;
@@ -62,6 +66,8 @@ public class MyInfo extends AppCompatActivity {
         user_onlyid = intent.getStringExtra("user_onlyid");
         initView();
         getotherInfo();
+
+
 
 
         //收藏监听
@@ -85,13 +91,7 @@ public class MyInfo extends AppCompatActivity {
                             System.out.println("I‘m "+user.getObjectId());
 
                             BmobQuery<fans> query = new BmobQuery<>();
-
-
                             query.addWhereEqualTo("FromUser",Id);
-//                            query.addWhereEqualTo("followerIdsum",0);
-
-
-                            System.out.println("Id="+Id);
                             query.findObjects(new FindListener<fans>() {
                                 @Override
                                 public void done(List<fans> list, BmobException e) {
@@ -104,14 +104,9 @@ public class MyInfo extends AppCompatActivity {
 
                                         hisfan=list.get(0);
                                         System.out.println("hisfan="+hisfan.getObjectId());
-//                                        hisfan.setFollowerIdsum(6);
+
                                         System.out.println("he has "+hisfan.getFollowerIdsum());
 
-//                                        fans testfan=new fans();
-//                                        testfan.setFromUser("testttttt");
-//                                        testfan.increment("followerIdsum");
-//                                        testfan.setFollowerIdsum(2);
-//                                        System.out.println("test: "+testfan.getFollowerIdsum());
 
 
                                         if(!didfocus)//如果没有关注（不检查实际上数据库里有没有关系）
@@ -123,13 +118,7 @@ public class MyInfo extends AppCompatActivity {
                                                 relation.add(user);
                                                 System.out.println("Let'see that's what "+relation.getObjects().get(0).getObjectId());
 
-//                                                hisfan.addFan(relation);
-//                                                hisfan.setFollowerId(relation);
-//                                                hisfan.increment("followerIdsum",1);
-                                                int passor=hisfan.getFollowerIdsum();
-                                                hisfan.setFollowerIdsum(passor+1);
-//                                                Number passer=hisfan.getFollowerIdsum();
-//                                                hisfan.setFollowerIdsum(passer);
+                                                hisfan.addFan(relation);
 
                                                 System.out.println("he has "+hisfan.getFollowerIdsum());
 
@@ -169,11 +158,25 @@ public class MyInfo extends AppCompatActivity {
 
                                         }
                                         else{
-
                                             didfocus=false;
-                                            BmobRelation relation = new BmobRelation();
-                                            relation.add(user);
-                                            hisfan.removeFan(relation);
+                                            try{
+
+                                                BmobRelation relation = new BmobRelation();
+                                                relation.add(user);
+                                                hisfan.removeFan(relation);
+
+                                                System.out.println("he has "+hisfan.getFollowerIdsum());
+
+                                                hisfan.update(new UpdateListener() {
+                                                    @Override
+                                                    public void done(BmobException e) {
+                                                        if(e==null)
+                                                        { System.out.println("粉丝更新成功"); }
+                                                        else System.out.println("粉丝更新失败");;
+                                                    }
+                                                });
+                                            }catch (Exception pine)
+                                            {System.out.println(pine.toString());}
 
                                             BmobRelation focusrelation =new BmobRelation();
                                             focusrelation.add(woq);
@@ -285,7 +288,7 @@ public class MyInfo extends AppCompatActivity {
 
     private void getotherInfo() {
         BmobQuery<User> bmobQuery = new BmobQuery<>();
-        bmobQuery.include("follower_id");
+//        bmobQuery.include("follower_id");
         bmobQuery.getObject(user_onlyid, new QueryListener<User>() {
             @Override
             public void done(User user, BmobException e) {
@@ -298,7 +301,28 @@ public class MyInfo extends AppCompatActivity {
                     }else {
                         my_gender.setImageResource(R.drawable.gril);
                     }
-                }else {
+
+
+                    System.out.println(user.getFocusIdsum());
+                    focusnumber.setText(String.valueOf(user.getFocusIdsum()));
+//                    focusnumber.setText(user.getFocusIdsum());
+
+                    BmobQuery<fans> query = new BmobQuery<>();
+                    query.addWhereEqualTo("FromUser",user_onlyid);
+                    query.findObjects(new FindListener<fans>() {
+                                          @Override
+                                          public void done(List<fans> list, BmobException e) {
+                                              if (e == null) {
+                                                    fans hehe= list.get(0);
+                                                    System.out.println(hehe.getFollowerIdsum());
+                                                    fansnumber.setText(String.valueOf(hehe.getFollowerIdsum()));
+                                              } else {
+                                                  System.out.println("加载该用户粉丝数失败");
+                                              }
+                                          }
+                                      });
+                }
+                else {
                     Toast.makeText(MyInfo.this, "加载失败", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -370,6 +394,9 @@ public class MyInfo extends AppCompatActivity {
         smartTabLayout = findViewById(R.id.myinfotab);
         viewPager = findViewById(R.id.myinfovp);
         focus = findViewById(R.id.focus);
+
+        fansnumber=findViewById(R.id.fans_number);
+        focusnumber=findViewById(R.id.focus_number);
 
      //   focus_or_not = findViewById(R.id.focus);
     }
