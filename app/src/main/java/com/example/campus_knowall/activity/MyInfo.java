@@ -17,6 +17,7 @@ import com.example.campus_knowall.Adapter.MycollectpushAdapter;
 import com.example.campus_knowall.Bean.Comunity;
 import com.example.campus_knowall.Bean.Post;
 import com.example.campus_knowall.Bean.User;
+import com.example.campus_knowall.Bean.fans;
 import com.example.campus_knowall.R;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
@@ -25,6 +26,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentStatePagerItemAdapter;
 
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobPointer;
@@ -49,6 +51,8 @@ public class MyInfo extends AppCompatActivity {
 
     String user_onlyid;
     User gethim;
+    fans hisfan;
+    boolean didfocus=false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,189 +71,141 @@ public class MyInfo extends AppCompatActivity {
 
                 Intent in = getIntent();
                 String Id = in.getStringExtra("user_onlyid");
-//                if(Id==null)
-//                {
-//                    Toast.makeText(MyInfo.this, "参数呢？", Toast.LENGTH_SHORT).show();
-//                }
-//                else
-//                {
-//                    Toast.makeText(MyInfo.this, "参数是"+Id, Toast.LENGTH_SHORT).show();
-//                }
+                User user=BmobUser.getCurrentUser(User.class);
 
-                BmobQuery<User> bmobQuery = new BmobQuery<>();
-                bmobQuery.getObject(Id, new QueryListener<User>()
-                {
+                queryUser(Id, new OnUserQueryCompleted(){
                     @Override
-                    public void done(User worker, BmobException e) {
-//                        if(worker.getIsrelated()==null)
-//                        {
-//                            Toast.makeText(MyInfo.this, "查了个寂寞", Toast.LENGTH_SHORT).show();
-//                        }
-//                        else
-//                        {
-//                            Toast.makeText(MyInfo.this, "你是dd"+worker.getIsrelated(), Toast.LENGTH_SHORT).show();
-//                        }
-                        if (worker.getIsrelated().equals("0")) {
-                            Intent in = getIntent();
-                            String Id = in.getStringExtra("user_onlyid");
+                    public void onUserQueryCompleted(User result) {
+                        // 在回调函数中处理查询结果
+                        if (result != null) {
+                            // 处理查询到的用户对象(主页所属用户)
+                            User woq = result;
 
-                            System.out.println("successful attain "+Id);
+                            System.out.println("被关注者是"+woq.getNickname()+"/粉丝是"+user.getNickname());
+                            System.out.println("I‘m "+user.getObjectId());
 
-                            User user = BmobUser.getCurrentUser(User.class);
-                            System.out.println("I'm "+user.getObjectId());
-//                            System.out.println("TestStatus"+user.getIsrelated());
-
-//                            User woq = new User();
-//                            woq.setObjectId(Id);
-//                            BmobQuery<User> query = new BmobQuery<>();
+                            BmobQuery<fans> query = new BmobQuery<>();
 
 
+                            query.addWhereEqualTo("FromUser",Id);
+//                            query.addWhereEqualTo("followerIdsum",0);
 
-//                            query.getObject(Id, new QueryListener<User>() {
-//                                @Override
-//                                public void done(User object, BmobException e) {
-//                                    if(object!=null)
-//                                    {
-//
-//                                        System.out.println("CheckIfExist"+object.getObjectId());
-//                                        // 在这里可以使用获取到的实例变量值进行后续操作
-//                                        System.out.println("BMOB查询成功：" +object.getNickname() );
-//                                    }
-//                                    else System.out.println("你查了个空气");
-//                                    if (e == null) {
-//                                        // 查询成功，object 中存储了查询结果
-//                                        // 通过 object 对象获取实例变量的值
-//                                        gethim=object;
-//                                        callback.onUserQueryCompleted(user);
-//                                    } else {
-//                                        // 查询失败，e 中存储了异常信息
-//                                        // 处理错误的逻辑
-//                                        System.out.println("BMOB查询失败：" + e.getMessage());
-//                                    }
-//                                }
-//                            });
 
-                            queryUser(Id, new OnUserQueryCompleted(){
+                            System.out.println("Id="+Id);
+                            query.findObjects(new FindListener<fans>() {
                                 @Override
-                                public void onUserQueryCompleted(User result) {
-                                    // 在回调函数中处理查询结果
-                                    if (result != null) {
-                                        // 处理查询到的用户对象
-                                        User woq = result;
-                                        woq.setIsrelated("1");
+                                public void done(List<fans> list, BmobException e) {
+                                    if (e == null) {
+//                                        if(result.size()<1)
+//                                        {System.out.println("没有找到对应的fans");
+//                                            return;
+//                                        }
+//                                        else System.out.println("有："+result.size());
 
-                                        System.out.println("被关注者是"+woq.getNickname()+"/粉丝是"+user.getNickname());
+                                        hisfan=list.get(0);
+                                        System.out.println("hisfan="+hisfan.getObjectId());
+//                                        hisfan.setFollowerIdsum(6);
+                                        System.out.println("he has "+hisfan.getFollowerIdsum());
+
+//                                        fans testfan=new fans();
+//                                        testfan.setFromUser("testttttt");
+//                                        testfan.increment("followerIdsum");
+//                                        testfan.setFollowerIdsum(2);
+//                                        System.out.println("test: "+testfan.getFollowerIdsum());
 
 
-                                        BmobRelation relation = new BmobRelation();
-                                        relation.add(user);
-                                        woq.addFollower(relation);
+                                        if(!didfocus)//如果没有关注（不检查实际上数据库里有没有关系）
+                                        {
+                                            didfocus=true;
 
-                                        BmobRelation focusrelation = new BmobRelation();
-                                        focusrelation.add(woq);
-                                        user.addFocus(focusrelation);
+                                            try{
+                                                BmobRelation relation = new BmobRelation();
+                                                relation.add(user);
+                                                System.out.println("Let'see that's what "+relation.getObjects().get(0).getObjectId());
 
-                                        System.out.println("He's"+woq.getObjectId());
-                                        System.out.println("We met "+woq.getIsrelated()+" since "+woq.getFollowerIdsum());
+//                                                hisfan.addFan(relation);
+//                                                hisfan.setFollowerId(relation);
+//                                                hisfan.increment("followerIdsum",1);
+                                                int passor=hisfan.getFollowerIdsum();
+                                                hisfan.setFollowerIdsum(passor+1);
+//                                                Number passer=hisfan.getFollowerIdsum();
+//                                                hisfan.setFollowerIdsum(passer);
 
-                                        focus.setText("已关注");
-                                        Toast.makeText(MyInfo.this, "关注成功", Toast.LENGTH_SHORT).show();
+                                                System.out.println("he has "+hisfan.getFollowerIdsum());
 
-//                                        woq.update(new UpdateListener() {
-//                                            @Override
-//                                            public void done(BmobException e) {
-//                                                if (e==null){
-//                                                    focus.setText("已关注");
-//                                                    Toast.makeText(MyInfo.this, "关注成功", Toast.LENGTH_SHORT).show();
-//                                                }else {
-//                                                    System.out.println(e.toString());
-//                                                    System.out.println(e);
-//                                                    Toast.makeText(MyInfo.this, "关注失败"+e.toString(), Toast.LENGTH_SHORT).show();
-//                                                }
-//                                            }
-//                                        });
+                                                hisfan.update(new UpdateListener() {
+                                                    @Override
+                                                    public void done(BmobException e) {
+                                                        if(e==null)
+                                                        { System.out.println("粉丝更新成功"); }
+                                                        else System.out.println("粉丝更新失败");;
+                                                    }
+                                                });
+                                            }catch (Exception pine)
+                                            {System.out.println(pine.toString());}
+
+
+
+                                            BmobRelation focusrelation = new BmobRelation();
+                                            focusrelation.add(woq);
+                                            user.addFocus(focusrelation);
+
+
+
+
+                                            user.update(new UpdateListener() {
+                                                @Override
+                                                public void done(BmobException e) {
+                                                    if (e==null){
+                                                        focus.setText("已关注");
+                                                        Toast.makeText(MyInfo.this, "关注成功", Toast.LENGTH_SHORT).show();
+                                                    }else {
+                                                        System.out.println(e.toString());
+                                                        Toast.makeText(MyInfo.this, "关注失败"+e.toString(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+
+
+                                        }
+                                        else{
+
+                                            didfocus=false;
+                                            BmobRelation relation = new BmobRelation();
+                                            relation.add(user);
+                                            hisfan.removeFan(relation);
+
+                                            BmobRelation focusrelation =new BmobRelation();
+                                            focusrelation.add(woq);
+                                            user.removeFocus(focusrelation);
+                                            user.update(new UpdateListener() {
+                                                @Override
+                                                public void done(BmobException e) {
+                                                    if (e==null){
+                                                        focus.setText("关注");
+                                                        Toast.makeText(MyInfo.this, "取消关注成功", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                    else {
+                                                        Toast.makeText(MyInfo.this, "取消关注失败", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                        }
+
                                     } else {
-                                        // 查询结果为空
-                                        System.out.println("没查到东西");
+                                        // 查询失败
+                                        System.out.println("没能找到对应用户：" + e.getMessage());
                                     }
                                 }
                             });
 
 
-//                            woq=gethim;
-//                            System.out.println("checkRelation"+woq.getIsrelated());
-
-                        }
-                        else {
-                            Intent in = getIntent();
-                            String Id = in.getStringExtra("user_onlyid");
-                            User user = BmobUser.getCurrentUser(User.class);
-
-                            queryUser(Id, new OnUserQueryCompleted(){
-                                @Override
-                                public void onUserQueryCompleted(User result) {
-                                    // 在回调函数中处理查询结果
-                                    if (result != null) {
-                                        // 处理查询到的用户对象
-                                        User woq = result;
-                                        woq.setIsrelated("0");
-
-                                        BmobRelation relation = new BmobRelation();
-                                        relation.remove(user);
-                                        woq.removeFollower(relation);
-
-                                        BmobRelation focusrelation =new BmobRelation();
-                                        focusrelation.remove(woq);
-                                        user.removeFocus(focusrelation);
-
-                                        focus.setText("关注");
-                                        Toast.makeText(MyInfo.this, "取消关注成功", Toast.LENGTH_SHORT).show();
-
-//                                        woq.update(new UpdateListener() {
-//                                            @Override
-//                                            public void done(BmobException e) {
-//                                                if (e==null){
-//                                                    focus.setText("关注");
-//                                                    Toast.makeText(MyInfo.this, "取消关注成功", Toast.LENGTH_SHORT).show();
-//                                                }else {
-//                                                    System.out.println(e.toString());
-//                                                    Toast.makeText(MyInfo.this, "取消关注失败"+e.toString(), Toast.LENGTH_SHORT).show();
-//                                                }
-//                                            }
-//                                        });
-                                    } else {
-                                        // 查询结果为空
-                                        System.out.println("没查到东西");
-                                    }
-                                }
-                            });
-//                            User woq = new User();
-//                            woq.setObjectId(Id);
-//                            woq.setIsrelated("0");
-
-//                            BmobRelation relation = new BmobRelation();
-//                            relation.remove(user);
-//                            woq.removeFollower(relation);
-//
-//                            BmobRelation focusrelation =new BmobRelation();
-//                            focusrelation.remove(woq);
-//                            user.removeFocus(focusrelation);
-//
-//                            woq.update(new UpdateListener() {
-//                                @Override
-//                                public void done(BmobException e) {
-//                                    if (e==null){
-//                                        focus.setText("关注");
-//                                        Toast.makeText(MyInfo.this, "取消关注成功", Toast.LENGTH_SHORT).show();
-//                                    }else {
-//                                        Toast.makeText(MyInfo.this, "取消关注失败", Toast.LENGTH_SHORT).show();
-//                                    }
-//                                }
-//                            });
+                        } else {
+                            // 查询结果为空
+                            System.out.println("没查到东西");
                         }
                     }
                 });
-
             }
         });
 

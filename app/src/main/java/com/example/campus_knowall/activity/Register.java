@@ -14,8 +14,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.campus_knowall.Bean.User;
+import com.example.campus_knowall.Bean.fans;
 import com.example.campus_knowall.R;
 
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -61,7 +63,10 @@ public class Register extends AppCompatActivity {
                         @Override
                         public void done(User user, BmobException e) {
                             if (e == null) {
+                                fans myfan=new fans();
+                                myfan.setFromUser(BmobUser.getCurrentUser(User.class).getObjectId());
                                 Toast.makeText(Register.this, "注册成功", Toast.LENGTH_SHORT).show();
+
                                 finish();
                             } else {
                                 Toast.makeText(Register.this, "注册失败", Toast.LENGTH_SHORT).show();
