@@ -34,6 +34,81 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/shape_fans_likes"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="?selectableItemBackground"
+            android:id="@+id/einfo"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/image_17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tint="#6386DD" />
+            <TextView
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:paddingLeft="10dp"
+                android:layout_weight="1"
+                android:text="基本信息修改"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:src="@drawable/left"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:tint="#000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="?selectableItemBackground"
+            android:id="@+id/epass"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tint="#7626A1" />
+            <TextView
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:paddingLeft="10dp"
+                android:layout_weight="1"
+                android:text="密码修改"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:src="@drawable/left"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:tint="#000" />
+        </LinearLayout>
+
     <Button
         android:id="@+id/loginout"
         android:layout_width="match_parent"
@@ -45,4 +120,5 @@
         android:textSize="22sp"
         android:textStyle="bold" />
 
+</LinearLayout>
 </LinearLayout>

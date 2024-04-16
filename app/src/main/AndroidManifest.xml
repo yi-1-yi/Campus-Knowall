@@ -47,6 +47,8 @@
         <activity android:name=".activity.MyFollower" />
         <activity android:name=".activity.MyFocus" />
         <activity android:name=".activity.Search" />
+        <activity android:name=".activity.Information" />
+        <activity android:name=".activity.Password" />
 
 
     </application>

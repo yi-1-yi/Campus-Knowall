@@ -10,6 +10,7 @@
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/drawable/ic_launcher_background.xml" value="0.255" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/drawable/shape_bottom.xml" value="0.1605" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/drawable/shape_ok.xml" value="0.1605" />
+        <entry key="..\:/Android/Campus-Knowall/app/src/main/res/drawable/shapr_modify.xml" value="0.1415" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_main_team.xml" value="0.2755208333333333" />
@@ -26,7 +27,7 @@
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_recievecom.xml" value="0.2857142857142857" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_register.xml" value="0.2755208333333333" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_search.xml" value="0.2755208333333333" />
-        <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_setting.xml" value="0.1" />
+        <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_setting.xml" value="0.18857142857142858" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/activity_splash.xml" value="0.2755208333333333" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/choose_item.xml" value="0.2755208333333333" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/com_item.xml" value="0.1" />
@@ -43,6 +44,9 @@
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/fragment_team.xml" value="0.2755208333333333" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/fragmentchat.xml" value="0.14285714285714285" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/fragmenthome.xml" value="0.2755208333333333" />
+        <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/mlodify_information.xml" value="0.12708333333333333" />
+        <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/modify_information.xml" value="0.1" />
+        <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/modify_password.xml" value="0.14285714285714285" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/mycollect_com.xml" value="0.2755208333333333" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/mycollect_push.xml" value="0.2755208333333333" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/mycomunity_item.xml" value="0.2755208333333333" />
@@ -53,6 +57,7 @@
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/reg_choose.xml" value="0.2755208333333333" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/reg_help.xml" value="0.2755208333333333" />
         <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/search_item.xml" value="0.2755208333333333" />
+        <entry key="..\:/Android/Campus-Knowall/app/src/main/res/layout/shapr_modify.xml" value="0.12708333333333333" />
         <entry key="..\:/CampusKnowall/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/CampusKnowall/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>

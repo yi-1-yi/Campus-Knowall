@@ -32,7 +32,7 @@ import cn.bmob.v3.listener.CountListener;
 import cn.bmob.v3.listener.QueryListener;
 
 public class MyFragment extends Fragment {
-    private TextView username;
+    private TextView nickname;
 
     private LinearLayout myinfo;
     private LinearLayout mypush;
@@ -177,8 +177,7 @@ public class MyFragment extends Fragment {
             @Override
             public void done(User user, BmobException e) {
                 if (e==null){
-                    username.setText(user.getUsername());
-//                    nickname.setText(user.getNickname());
+                    nickname.setText(user.getNickname());
                     if (user.getGender().equals("man")){
                         mine_gender.setImageResource(R.drawable.man);
                     }else {
@@ -192,8 +191,7 @@ public class MyFragment extends Fragment {
     }
 
     private void initView() {
-        username = getActivity().findViewById(R.id.username);
-//      nickname = getActivity().findViewById(R.id.nickname);
+        nickname = getActivity().findViewById(R.id.nickname000);
 //      loginout = getActivity().findViewById(R.id.loginout);
         myinfo = getActivity().findViewById(R.id.myinfo);
         mypush = getActivity().findViewById(R.id.mypush);

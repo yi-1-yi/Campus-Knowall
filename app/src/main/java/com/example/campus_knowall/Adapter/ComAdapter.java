@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class ComAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final int N_Type = 0;
@@ -39,7 +42,6 @@ public class ComAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private List<Com> data;
-
 
     public ComAdapter(Context context, List<Com> data) {
         this.context = context;
@@ -80,40 +82,56 @@ public class ComAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 Log.d("TestApp", "传后objectId(不显示): " + com.getObjectId());
                 Log.d("TestApp", "传后com(显示): " + com.getCom());
                 Log.d("TestApp", "传后postid(不显示): " + com.getPostid());
-                Log.d("TestApp", "传后name(显示): " + com.getUserid());
+                Log.d("TestApp", "传后user(不显示): " + com.getUserid());
             }
-
             queryUserNameFromBmob(com1.getUserid(),new OnUserNameLoadedListener() {
                 @Override
                 public void onUserNameLoaded(String name) {
                     // 在这里处理查询到的用户名数据
                     recyclerViewHOlder.nickname.setText(name);
+                    Log.d("TestApp", "传后name(显示): " + name);
                 }
             });
-
-//            recyclerViewHOlder.nickname.setText(com1.getUserid().getNickname());
-//            recyclerViewHOlder.postid.setText(com1.getPostid());
             recyclerViewHOlder.com.setText(com1.getCom());
-
-//            recyclerViewHOlder.itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    int position = recyclerViewHOlder.getAdapterPosition();
-//
-//                    if (BmobUser.getCurrentUser(BmobUser.class) != null) {
-//                        Intent in = new Intent(context, PushCom.class);
-//                        in.putExtra("nickname", com1.getUserid().getNickname());
-//                        in.putExtra("postid", com1.getPostid());
-//                        in.putExtra("com", com1.getCom());
-////                        in.putExtra("user_onlyid", post.getUserOnlyId());
-////                        in.putExtra("id", data.get(position).getObjectId());
-//                        context.startActivity(in);
-//                    } else {
-//                        Toast.makeText(context, "请登录", Toast.LENGTH_SHORT).show();
-//                        context.startActivity(new Intent(context, Login.class));
-//                    }
-//                }
-//            });
+            Log.d("TestApp", "查找是否被点赞");
+            Log.d("TestApp", "isLiked:"+com1.getIsLiked());
+            if (com1.getIsLiked().equals("1")){
+                //已被点赞
+                recyclerViewHOlder.like.setImageResource(R.drawable.like_after);
+            }
+            recyclerViewHOlder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = recyclerViewHOlder.getAdapterPosition();
+                    Log.d("TestApp", "comId：" +data.get(position).getObjectId()+"被点击了");
+                    String comId=data.get(position).getObjectId();
+                    //查找把数据库isliked设为1
+                    BmobQuery<Com> query = new BmobQuery<>();
+                    query.addWhereEqualTo("objectId",comId);
+                    query.findObjects(new FindListener<Com>() {
+                        @Override
+                        public void done(List<Com> list, BmobException e) {
+                            if (e == null && list.size() > 0) {
+                                Com object = list.get(0);
+                                object.setIsLiked("1"); // 将 isliked 属性值修改为 1
+                                object.update(new UpdateListener() {
+                                    @Override
+                                    public void done(BmobException e) {
+                                        if (e == null) {
+                                            // 更新成功
+                                            Log.d("TestApp", "isLiked被设置成1");
+                                        } else {
+                                            // 更新失败
+                                        }
+                                    }
+                                });
+                            } else {
+                                // 查询失败或未找到匹配记录
+                            }
+                        }
+                    });
+                }
+            });
         }
     }
 
@@ -139,6 +157,7 @@ public class ComAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private class RecyclerViewHOlder extends RecyclerView.ViewHolder {
 
         public TextView nickname, com;//com_item的textview
+        public ImageView like;
         public TextView loading;
 
         public RecyclerViewHOlder(View itemview, int view_type) {
@@ -146,6 +165,7 @@ public class ComAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (view_type == N_Type) {
                 nickname = (TextView)itemview.findViewById(R.id.comname);
                 com = (TextView)itemview.findViewById(R.id.comm);
+                like=itemview.findViewById(R.id.like);
             } else if (view_type == F_Type) {
                 loading = (TextView)itemview.findViewById(R.id.footText);
             }

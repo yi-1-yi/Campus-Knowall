@@ -36,8 +36,6 @@ import cn.bmob.v3.listener.UpdateListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Recieve extends Activity {
-    private ComFragment comFragment;
-
     private TextView nickname,content,time,title,comm;
     private ImageView back;
     private ImageView rec_collect;
@@ -49,6 +47,7 @@ public class Recieve extends Activity {
     private RecyclerView rv;
     private SwipeRefreshLayout swipeRefreshLayout;
     ComAdapter adapter;
+    private int flag=0;
 
     //关注按钮
     private Button focus_or_not;
@@ -92,7 +91,7 @@ public class Recieve extends Activity {
             }
         });
 
-//        关注按钮的监听？按钮呢？
+        //关注监听
         focus_or_not.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,11 +190,6 @@ public class Recieve extends Activity {
         addc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent push = new  Intent();
-//                push.setClass(Recieve.this,PushCom.class);
-                //把帖子的信息也传过去
-//                push.putExtra("id",id);
-//                startActivity(push);
                 if (comm.getText().toString().isEmpty()){
                     Toast.makeText(Recieve.this, "请输入内容", Toast.LENGTH_SHORT).show();
                 }else {
@@ -220,7 +214,6 @@ public class Recieve extends Activity {
                 }
             }
         });
-//        selectedFragment(7);
     }
 
     private void getisrelated() {
@@ -312,25 +305,4 @@ public class Recieve extends Activity {
     public interface OnDataLoadedListener {
         void onDataLoaded(List<Com> data);
     }
-
-//    private void selectedFragment(int position){
-//        FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-//        hideFragment(fragmentTransaction);
-//        if(position==7){
-//            if(comFragment==null){
-//                comFragment=new ComFragment();
-//                fragmentTransaction.add(R.id.content,comFragment);
-//            }else{
-//                fragmentTransaction.show(comFragment);
-//            }
-//        }
-//        //提交
-//        fragmentTransaction.commit();
-//    }
-//
-//    private  void  hideFragment(FragmentTransaction fragmentTransaction){
-//        if(comFragment!=null){
-//            fragmentTransaction.hide(comFragment);
-//        }
-//    }
 }
