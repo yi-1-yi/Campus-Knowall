@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.campus_knowall.Bean.User;
+import com.example.campus_knowall.Bean.fans;
 import com.example.campus_knowall.activity.MyCollect;
 import com.example.campus_knowall.activity.MyComunity;
 import com.example.campus_knowall.activity.MyFocus;
@@ -24,11 +25,14 @@ import com.example.campus_knowall.activity.MyInfo;
 import com.example.campus_knowall.activity.MyPush;
 import com.example.campus_knowall.activity.Setting;
 
+import java.util.List;
+
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobPointer;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.CountListener;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 
 public class MyFragment extends Fragment {
@@ -36,7 +40,6 @@ public class MyFragment extends Fragment {
 
     private LinearLayout myinfo;
     private LinearLayout mypush;
-    private LinearLayout mycomunity;
     private LinearLayout mycollect;
     private LinearLayout setting;
 
@@ -110,12 +113,6 @@ public class MyFragment extends Fragment {
             }
         });
 
-        mycomunity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MyComunity.class));
-            }
-        });
 
         mycollect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,13 +131,19 @@ public class MyFragment extends Fragment {
     }
 
     private void getMyfansnum() {
-//        final User us = BmobUser.getCurrentUser(User.class);
-        BmobQuery<User> query = new BmobQuery<>();
-        query.include("follower_id");
-        query.getObject(BmobUser.getCurrentUser(User.class).getObjectId(), new QueryListener<User>() {
+        final User us = User.getCurrentUser(User.class);
+        BmobQuery<fans> query = new BmobQuery<>();
+        query.addWhereEqualTo("FromUser",us.getObjectId());
+        query.findObjects(new FindListener<fans>() {
             @Override
-            public void done(User user, BmobException e) {
-                //fansnum.setText(Integer.toString(user.getFollower_id()));
+            public void done(List<fans> list, BmobException e) {
+                if(e==null)
+                {
+                    fans myfans= list.get(0);
+                    System.out.println("粉丝数是"+myfans.getFollowerIdsum());
+                    fansnum.setText(String.valueOf(myfans.getFollowerIdsum()));
+                }
+                else System.out.println("获取粉丝数失败了");
             }
         });
     }
@@ -160,13 +163,6 @@ public class MyFragment extends Fragment {
             }
         });
     }
-
-//    private void setnumfont() { //Gorlock
-//        Typeface fans = Typeface.createFromAsset(getActivity().getAssets(),"Headache.ttf");
-//        Typeface focus = Typeface.createFromAsset(getActivity().getAssets(),"Headache.ttf");
-//        fansnum.setTypeface(fans);
-//        myfocusnum.setTypeface(focus);
-//    }
 
     private void getMyinfo() {
         //加载个人信息
@@ -195,7 +191,6 @@ public class MyFragment extends Fragment {
 //      loginout = getActivity().findViewById(R.id.loginout);
         myinfo = getActivity().findViewById(R.id.myinfo);
         mypush = getActivity().findViewById(R.id.mypush);
-        mycomunity = getActivity().findViewById(R.id.mycomunity);
         mycollect = getActivity().findViewById(R.id.mycollect);
         mine_gender = getActivity().findViewById(R.id.mine_gender);
         fansnum = getActivity().findViewById(R.id.fansnum);
