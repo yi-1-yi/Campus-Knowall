@@ -81,14 +81,25 @@ public class User extends BmobUser {
         this.follower_id = follower_id;
     }*/
 
+    public void addFollower(BmobRelation fellow)
+    {
+        this.setFollowerId(fellow);
+        this.followerIdsum++;
+    }
+    public void addFocus(BmobRelation idol)
+    {
+        this.setFocuId(idol);
+        this.focusIdsum++;
+    }
+
     public void removeFollower(BmobRelation fellow)
     {
-        this.followerId.remove(fellow);
+        this.setFollowerId(fellow);
         this.followerIdsum--;
     }
     public void removeFocus(BmobRelation idol)
     {
-        this.focuId.remove(idol);
+        this.setFocuId(idol);
         this.focusIdsum--;
     }
 
@@ -102,4 +113,13 @@ public class User extends BmobUser {
         this.isRelated = isrelated;
     }
 
+    private String phone;
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }

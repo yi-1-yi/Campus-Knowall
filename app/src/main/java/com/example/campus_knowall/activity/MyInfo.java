@@ -93,11 +93,11 @@ public class MyInfo extends AppCompatActivity {
                             Intent in = getIntent();
                             String Id = in.getStringExtra("user_onlyid");
 
-                            System.out.println("successful attain"+Id);
+                            System.out.println("successful attain "+Id);
 
                             User user = BmobUser.getCurrentUser(User.class);
-                            System.out.println("I'm"+user.getObjectId());
-                            System.out.println("TestStatus"+user.getIsrelated());
+                            System.out.println("I'm "+user.getObjectId());
+//                            System.out.println("TestStatus"+user.getIsrelated());
 
 //                            User woq = new User();
 //                            woq.setObjectId(Id);
@@ -131,25 +131,26 @@ public class MyInfo extends AppCompatActivity {
 
                             queryUser(Id, new OnUserQueryCompleted(){
                                 @Override
-                                public void onUserQueryCompleted(User user) {
+                                public void onUserQueryCompleted(User result) {
                                     // 在回调函数中处理查询结果
-                                    if (user != null) {
+                                    if (result != null) {
                                         // 处理查询到的用户对象
-                                        User woq = user;
+                                        User woq = result;
                                         woq.setIsrelated("1");
+
+                                        System.out.println("被关注者是"+woq.getNickname()+"/粉丝是"+user.getNickname());
+
 
                                         BmobRelation relation = new BmobRelation();
                                         relation.add(user);
-                                        woq.setFollowerId(relation);
-                                        woq.increment("followerIdsum");
+                                        woq.addFollower(relation);
 
                                         BmobRelation focusrelation = new BmobRelation();
                                         focusrelation.add(woq);
-                                        user.setFocuId(focusrelation);
-                                        user.increment("focusIdsum");
+                                        user.addFocus(focusrelation);
 
                                         System.out.println("He's"+woq.getObjectId());
-                                        System.out.println("We met"+woq.getIsrelated()+" since "+woq.getFollowerIdsum());
+                                        System.out.println("We met "+woq.getIsrelated()+" since "+woq.getFollowerIdsum());
 
                                         focus.setText("已关注");
                                         Toast.makeText(MyInfo.this, "关注成功", Toast.LENGTH_SHORT).show();
@@ -186,11 +187,11 @@ public class MyInfo extends AppCompatActivity {
 
                             queryUser(Id, new OnUserQueryCompleted(){
                                 @Override
-                                public void onUserQueryCompleted(User user) {
+                                public void onUserQueryCompleted(User result) {
                                     // 在回调函数中处理查询结果
-                                    if (user != null) {
+                                    if (result != null) {
                                         // 处理查询到的用户对象
-                                        User woq = user;
+                                        User woq = result;
                                         woq.setIsrelated("0");
 
                                         BmobRelation relation = new BmobRelation();
